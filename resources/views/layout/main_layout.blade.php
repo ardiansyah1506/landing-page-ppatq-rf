@@ -36,7 +36,7 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item" id="home">
-                    <a class="nav-link" href="{{Route('HomePage')}}" name="homePage"><i class="bi bi-house-door-fill text-white"></i>Home</a>
+                    <a class="nav-link" href="{{Route('HomePage')}}" name="homePage"><i class="bi bi-house-door"></i>Home</a>
                 </li>
                 <li class="nav-item" id="about">
                     <a class="nav-link" href="{{Route('aboutPage')}}" name="aboutPage"><i class="bi bi-building"></i>Tentang Pesantren</a>
