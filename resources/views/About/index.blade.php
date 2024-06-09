@@ -8,6 +8,8 @@
  
 
 @include('About.content')
+@include('metode.content')
+
 @endsection
 
 @section('script')
