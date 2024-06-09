@@ -16,3 +16,5 @@ Route::post('/get_santri', $controller_path .'\SantriController@get_santri')->na
 
 Route::get('/berita', $controller_path .'\BeritaController@index')->name('berita');
 Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')->name('berita.detail');
+
+Route::get('/kelas', $controller_path .'\KelasController@index')->name('kelas');

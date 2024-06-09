@@ -2,7 +2,7 @@
 
 @extends('layout.main_layout')
 @section('title')
-    <title>Santri</title>
+    <title>Kelas</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,84 +10,12 @@
 
 @section('content')
     <div class="container-fluid py-5">
-        <!-- Search Input -->
-        <div class="row mb-5">
-                <div class="d-flex justify-content-center">
-                    <label class="d-flex-justify-content-end">
-                        <span class="icon fs-5">
-                            <i class="fas fa-search"></i>
-                        </span>
-                    <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInput" placeholder="Cari Santri" autocomplete="off" autofocus/>
-                </label>
-            </div>
+        <div class="row d-flex justify-content-center gap-2">
+        @foreach ($data as $kelas)
+                <a href="/kelas/{{ $kelas->id }}" class="px-3 col-2 text-center mb-2 btn btn-success text-decoration-none text-white">{{ $kelas->name }}</a>
+        @endforeach
         </div>
-
-        <!-- Santri Container -->
-        <div class="row" id="santri-container">
-            <!-- Data santri akan ditambahkan melalui JavaScript -->
-            @foreach ($data as $santri)
-                <div class="col-md-7 col-lg-3 wow fadeIn mb-4">
-                    <div class="card border-0 shadow-sm p-4 rounded">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
-                                class="w-50 img-thumbnail" alt="foto profil {{ $santri->nama }}">
-                        </div>
-                        <div class="p-1 d-flex flex-column gap-5">
-                            <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama }}</h5>
-                            <ul class="list-unstyled w-100 mb-4">
-                                <div class="row mb-3 text-center gap-1">
-                                        <div class="col shadow-sm">
-                                            <p class="text-white bg-success rounded-bottom">
-                                                Kelas
-                                            </p>
-                                            <h6>
-                                                {{ $santri->kelas ?? '-' }}
-                                            </h6>
-                                        </div>
-                                        <div class="col shadow-sm">
-                                            <p class="bg-success text-white rounded-bottom">
-                                                Kota
-                                            </p>
-                                            <h6 class="text-uppercase">
-                                                {{ $santri->kecamatan ?? '-' }}
-                                            </h6>
-                                        </div>
-                                </div>
-                                <div class="row">
-                                    <li class="col-12 mb-3 text-center shadow-sm">
-                                        <div class="d-flex flex-column align-items-center ">
-                                            <p class="mb-2 col-12 bg-success text-white rounded-bottom">
-                                                Wali Kelas
-                                            </p>
-                                            <p>
-                                                {{ $santri->wali_kelas ?? '-' }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="col-12 text-center shadow-sm">
-                                        <div class="d-flex flex-column align-items-center">
-                                            <p class="mb-2 col-12 bg-success text-white rounded-bottom">
-                                                Guru Murroby
-                                            </p>
-                                            <p>
-                                                {{ $santri->guru_murroby ?? '-' }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                </div>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <!-- Pagination -->
-        <div class="d-flex justify-content-center pagination-container mt-5">
-            <!-- Pagination -->
-            {{ $data->links() }}
-        </div>
+        @yield('indexKelas')
     </div>
 @endsection
 

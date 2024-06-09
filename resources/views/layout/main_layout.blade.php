@@ -18,7 +18,7 @@
     </div>
 
     <div class="w-100 bg-white">
-        <div class="col-lg-6 col-12 p-3 header-responsive">
+        <div class="col-lg-6 col-12 p-3 header-responsive gap-5">
             <img src="{{asset('img/cropped-header-objectpatq.png')}}" width="100" alt="">
             <div class="d-flex flex-column">
                 <h2>
@@ -52,6 +52,9 @@
                 </li>
                 <li class="nav-item" id="berita">
                     <a class="nav-link" href="{{Route('berita')}}"><i class="bi bi-newspaper"></i>Berita</a>
+                </li>
+                <li class="nav-item" id="kelas">
+                    <a class="nav-link" href="{{Route('kelas')}}"><i class="bi bi-people"></i>Kelas</a>
                 </li>
           
             </ul>
