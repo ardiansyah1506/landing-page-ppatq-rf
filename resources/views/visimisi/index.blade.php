@@ -1,17 +1,15 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Visi Misi</title>
+<title>Visi Misi | PPATQ-RF</title>
 @endsection
 @section('content')
-<div class="p-4">
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <p class="fs-2 text-center p-3 text-green">VISI DAN MISI
-            </p>
-            <p class="fs-3">
-                PONDOK PESANTREN ANAK-ANAK
-                TAHFIDZUL QUR’AN RF
-            </p>
-    </div>
+<div class="py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row">
+        <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
+                        <h2 class="fw-bold text-green text-uppercase text-green">Visi Dan Misi</h2>
+                        <small class="mb-0">PPATQ RAUDLATUL FALAH</small>
+                </div>
+        </div>
     <div class="card flex-col flex-md-row  p-2 mb-4">
         <img class="image-responsive" src="{{asset('img/visi1.jpg')}}" alt="Visi Image">
         <div class="card-body">

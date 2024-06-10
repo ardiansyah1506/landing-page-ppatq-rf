@@ -2,14 +2,20 @@
 
 @extends('layout.main_layout')
 @section('title')
-    <title>Santri</title>
+    <title>Santri | PPATQ-RF</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('content')
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row">
+                <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
+                        <h2 class="fw-bold text-green text-uppercase text-green">Daftar Santri</h2>
+                        <small class="mb-0">Daftar Santri PPATQ RAUDLATUL FALAH</small>
+                </div>
+        </div>
         <!-- Search Input -->
         <div class="row mb-5">
                 <div class="d-flex justify-content-center">
@@ -125,45 +131,60 @@
                         // Iterasi setiap santri dan tambahkan ke tabel
                         $.each(data.data, function(index, santri) {
                             $('#santri-container').append(`
-                            <div class="col-md-7 col-lg-3 mb-3 wow fadeIn">
-            <div class="card border-0 shadow p-4">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo}"
-                         class="w-50">
-                </div>
-                <div class="card-body d-flex flex-column gap-5">
-                    <h5 class="fs-5 mb-0 text-center">${santri.nama}</h5>
-                    <ul class="list-unstyled w-100 mb-4">
-                        <div class="d-flex justify-content-between">
-                            <li class="mb-3">
-                                <div class="d-flex flex-column align-items-center">
-                                    <small>Kelas</small>
-                                    <h6>${santri.kelas ?? '-'}</h6>
+                            <div class="col-md-7 col-lg-3 wow fadeIn mb-4">
+                                <div class="card border-0 shadow-sm p-4 rounded">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo ?? '-'}"
+                                            class="w-50 img-thumbnail" alt="foto profil ${santri.nama ?? '-'}">
+                                    </div>
+                                    <div class="p-1 d-flex flex-column gap-5">
+                                        <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama ?? '-'}</h5>
+                                        <ul class="list-unstyled w-100 mb-4">
+                                            <div class="row mb-3 text-center gap-1">
+                                                    <div class="col shadow-sm">
+                                                        <p class="text-white bg-green rounded-bottom">
+                                                            Kelas
+                                                        </p>
+                                                        <h6>
+                                                            ${ santri.kelas ?? '-' }
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col shadow-sm">
+                                                        <p class="bg-green text-white rounded-bottom">
+                                                            Kota
+                                                        </p>
+                                                        <h6 class="text-uppercase">
+                                                            ${ santri.kecamatan ?? '-' }
+                                                        </h6>
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <li class="col-12 mb-3 text-center shadow-sm">
+                                                    <div class="d-flex flex-column align-items-center ">
+                                                        <p class="mb-2 col-12 bg-green text-white rounded-bottom">
+                                                            Wali Kelas
+                                                        </p>
+                                                        <p>
+                                                            ${santri.wali_kelas ?? '-'}
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                                <li class="col-12 text-center shadow-sm">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <p class="mb-2 col-12 bg-green text-white rounded-bottom">
+                                                            Guru Murroby
+                                                        </p>
+                                                        <p>
+                                                            ${ santri.guru_murroby ?? '-' }
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </div>
+
+                                        </ul>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="mb-3">
-                                <div class="d-flex flex-column align-items-center">
-                                    <small>Kota</small>
-                                    <h6>${santri.kecamatan ?? '-'}</h6>
-                                </div>
-                            </li>
-                        </div>
-                        <li class="mb-3">
-                            <div class="d-flex flex-column align-items-center">
-                                <p>Wali Kelas</p>
-                                <p>${santri.wali_kelas ?? '-'}</p>
-                            </div>
-                        </li>
-                        <li class="mb-3">
-                            <div class="d-flex flex-column align-items-center">
-                                <p>Guru Murroby</p>
-                                <p>${santri.guru_murroby ?? '-'}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>    
+                            </div>    
                             `);
                         });
                         // Menambahkan pagination

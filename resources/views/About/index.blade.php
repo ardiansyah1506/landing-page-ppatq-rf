@@ -1,6 +1,6 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Tentang Pesantren</title>
+<title>Tentang Pesantren | PPATQ-RF</title>
 @endsection
 
 @section('content')

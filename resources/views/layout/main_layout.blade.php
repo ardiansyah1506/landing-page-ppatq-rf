@@ -56,6 +56,9 @@
                 <li class="nav-item" id="kelas">
                     <a class="nav-link" href="{{Route('kelas')}}"><i class="bi bi-people"></i>Kelas</a>
                 </li>
+                <li class="nav-item" id="kamar">
+                    <a class="nav-link" href="{{Route('kamar')}}"><i class="bi bi-house-door"></i>Kamar</a>
+                </li>
           
             </ul>
         </div>

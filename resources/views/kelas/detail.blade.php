@@ -2,7 +2,7 @@
 
 @extends('layout.main_layout')
 @section('title')
-    <title>Kelas {{$kelasData->kode_kelas}}</title>
+    <title>{{ $kelasData->nama_kelas }} | PPATQ-RF</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,8 +20,7 @@
                             @if ($kelasData->wali_kelas_photo)
                                 <img class="w-50 img-thumbnail" 
                                      src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $kelasData->wali_kelas_photo }}"
-                                     alt="foto profil"
-                                     onerror="this.onerror=null; this.src='{{ asset('img/auth-cover-login-mask-light.png') }}';">
+                                     alt="foto profil" onerror="this.onerror=null; this.src='{{ asset('img/auth-cover-login-mask-light.png') }}';">
                             @else
                                 <img class="w-50 img-thumbnail" 
                                      src="{{ asset('img/auth-cover-login-mask-light.png') }}"
@@ -53,18 +52,18 @@
                             <ul class="list-unstyled w-100 mb-4">
                                 <div class="col text-center">
                                     <div class="col shadow-sm  mb-4">
-                                        <p class="text-white bg-green rounded-bottom">
+                                        <p class="text-white bg-green rounded-bottom mb-0">
                                             Guru Murobby
                                         </p>
-                                        <h6 class="">
+                                        <h6 class="p-3">
                                             {{ $santri->guru_murroby ?? '-' }}
                                         </h6>
                                     </div>
                                     <div class="col shadow-sm">
-                                        <p class="bg-green text-white rounded-bottom">
+                                        <p class="bg-green text-white rounded-bottom mb-0">
                                             Kota
                                         </p>
-                                        <h6 class="text-uppercase">
+                                        <h6 class="text-uppercase p-3">
                                             {{ $santri->kecamatan ?? '-' }}
                                         </h6>
                                     </div>

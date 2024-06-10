@@ -19,3 +19,6 @@ Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')-
 
 Route::get('/kelas', $controller_path .'\KelasController@index')->name('kelas');
 Route::get('/kelas/{id}', $controller_path .'\KelasController@detail')->name('kelas.detail');
+
+Route::get('/kamar', $controller_path .'\KamarController@index')->name('kamar');
+Route::get('/kamar/{id}', $controller_path .'\KamarController@show')->name('kamar.detail');

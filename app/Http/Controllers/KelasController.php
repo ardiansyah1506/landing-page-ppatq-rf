@@ -31,7 +31,7 @@ class KelasController extends Controller
         ->select(
             'employee_new.nama AS wali_kelas_nama',
             'employee_new.photo AS wali_kelas_photo',
-            'ref_kelas.code AS kode_kelas'
+            'ref_kelas.name AS nama_kelas'
         )
         ->first();
 

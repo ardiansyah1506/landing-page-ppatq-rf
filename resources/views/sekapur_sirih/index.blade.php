@@ -1,6 +1,6 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Sekapur Sirih</title>
+<title>Sekapur Sirih | PPATQ-RF</title>
 @endsection
 
 

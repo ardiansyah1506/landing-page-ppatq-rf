@@ -1,11 +1,11 @@
 @extends('layout.main_layout')
 @section('title')
-<title>PPATQ - RF</title>
+<title>Beranda | PPATQ-RF</title>
 @endsection
 
 @section('content')
-<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-inner">
+<div id="header-carousel" class="carousel slide carousel-fade p-sm-4 mt-4" data-bs-ride="carousel">
+    <div class="carousel-inner shadow-sm rounded">
         @foreach ($berita as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
             @php
@@ -21,6 +21,7 @@
             <div class="carousel-caption d-flex flex-column justify-content-center">
                 <div class="text-start ml-carousel" style="max-width: 900px;">
                     <h1 class="fs-2 text-white text-uppercase mb-3 animated slideInDown">{{ $item->judul }}</h1>
+                    <p>{{ Str::limit(strip_tags($item->isi_berita),150) }}</p>
                     <a href="{{ route('berita.detail', ['id_berita' => $item->id]) }}" class="btn btn-success py-md-3 px-md-5 me-3 animated slideInLeft">Baca Selengkapnya</a>
                 </div>
             </div>

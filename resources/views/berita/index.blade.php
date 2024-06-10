@@ -1,13 +1,13 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Berita</title>
+<title>Berita | PPATQ-RF</title>
 @endsection
 @section('header')
 @endsection
 @section('content')
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5 w-100">
+        <div class="container w-100">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
                 <h2 class="fw-bold text-green text-uppercase text-green">Berita PPATQ</h2>
                 <small class="mb-0">Kumpulan Berita PPATQ RAUDLATUL FALAH</small>
@@ -38,6 +38,7 @@
                                     <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
                                 </div>
                                 <h4 class="mb-3">{{$berita->judul}}</h4>
+                                <p>{{ Str::limit(strip_tags($berita->isi_berita),150) }}</p>
                                 <a class="text-uppercase text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Read More <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
