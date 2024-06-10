@@ -12,7 +12,7 @@
     <div class="container-fluid py-5">
         <div class="row d-flex justify-content-center gap-2">
         @foreach ($data as $kelas)
-                <a href="/kelas/{{ $kelas->id }}" class="px-3 col-2 text-center mb-2 btn btn-success text-decoration-none text-white">{{ $kelas->name }}</a>
+                <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-2 text-center mb-2 btn btn-success text-decoration-none text-white">{{ $kelas->name }}</a>
         @endforeach
         </div>
         @yield('indexKelas')

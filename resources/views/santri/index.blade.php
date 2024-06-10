@@ -37,7 +37,7 @@
                             <ul class="list-unstyled w-100 mb-4">
                                 <div class="row mb-3 text-center gap-1">
                                         <div class="col shadow-sm">
-                                            <p class="text-white bg-success rounded-bottom">
+                                            <p class="text-white bg-green rounded-bottom">
                                                 Kelas
                                             </p>
                                             <h6>
@@ -45,7 +45,7 @@
                                             </h6>
                                         </div>
                                         <div class="col shadow-sm">
-                                            <p class="bg-success text-white rounded-bottom">
+                                            <p class="bg-green text-white rounded-bottom">
                                                 Kota
                                             </p>
                                             <h6 class="text-uppercase">
@@ -56,7 +56,7 @@
                                 <div class="row">
                                     <li class="col-12 mb-3 text-center shadow-sm">
                                         <div class="d-flex flex-column align-items-center ">
-                                            <p class="mb-2 col-12 bg-success text-white rounded-bottom">
+                                            <p class="mb-2 col-12 bg-green text-white rounded-bottom">
                                                 Wali Kelas
                                             </p>
                                             <p>
@@ -66,7 +66,7 @@
                                     </li>
                                     <li class="col-12 text-center shadow-sm">
                                         <div class="d-flex flex-column align-items-center">
-                                            <p class="mb-2 col-12 bg-success text-white rounded-bottom">
+                                            <p class="mb-2 col-12 bg-green text-white rounded-bottom">
                                                 Guru Murroby
                                             </p>
                                             <p>

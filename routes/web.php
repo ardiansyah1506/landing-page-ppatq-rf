@@ -18,3 +18,4 @@ Route::get('/berita', $controller_path .'\BeritaController@index')->name('berita
 Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')->name('berita.detail');
 
 Route::get('/kelas', $controller_path .'\KelasController@index')->name('kelas');
+Route::get('/kelas/{id}', $controller_path .'\KelasController@detail')->name('kelas.detail');
