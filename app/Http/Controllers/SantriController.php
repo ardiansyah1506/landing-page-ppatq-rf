@@ -63,10 +63,13 @@ class SantriController extends Controller
                              ->orWhere('guru_murroby.nama', 'like', '%' . $search . '%') // Correct alias used
                              ->orWhere('wali_kelas.nama', 'like', '%' . $search . '%'); // Correct alias used
                 });
+                $data = $query->get();
+            }else{
+
+                $data = $query->paginate(8);
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-            $data = $query->paginate(8);
     
             // Kembalikan data dalam format JSON
             return response()->json($data);

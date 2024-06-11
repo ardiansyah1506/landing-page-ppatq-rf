@@ -40,7 +40,7 @@
         <!-- Santri Container -->
         <div class="row" id="santri-container">
             <div class="text-center mb-4">
-                <h3 class="text-green ">Daftar Isi Kamar {{ $dataKamar->nama_kamar }}</h3>
+                <h3 class="text-green ">Santri Kamar {{ $dataKamar->nama_kamar }}</h3>
                 <p class="fst-italic">Jumlah Santri : {{ $jumlahIsi }}</p>
             </div>
             <!-- Data santri akan ditambahkan melalui JavaScript -->
@@ -57,10 +57,10 @@
                                 <div class="col text-center">
                                     <div class="col shadow-sm mb-4">
                                         <p class="text-white bg-green rounded-bottom mb-0">
-                                            Guru Murobby
+                                            Kelas
                                         </p>
-                                        <h6 class="p-3">
-                                            {{ $santri->guru_murroby ?? '-' }}
+                                        <h6 class="p-3 text-uppercase">
+                                            {{ $santri->kelas ?? '-' }}
                                         </h6>
                                     </div>
                                     <div class="col shadow-sm">

@@ -53,9 +53,10 @@ class KelasController extends Controller
         ->leftJoin('employee_new', 'ref_kamar.employee_id', '=', 'employee_new.id') // Alias for first employee_new join
         ->where('ref_kelas.id', '=', $id)->paginate(8);
 
+        $jumlahIsi = $query->count();
 
         // Mengembalikan data dalam format JSON
-        return view('kelas.detail', compact('query','kelasData'));
+        return view('kelas.detail', compact('query','kelasData','jumlahIsi'));
 
     } catch (\Exception $e) {
         // Mengembalikan pesan error jika terjadi exception
