@@ -5,14 +5,8 @@
 
 
 @section('header')
-
 @endsection
-
-
 @section('content')
-
-        @foreach ($data as $berita)
-       
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-4">
@@ -41,10 +35,8 @@
                         <p>{!! $berita->isi_berita !!}</p>
                     </div>
                     <!-- Blog Detail End -->
-    
                    
                 </div>
-                @endforeach
     
                 <!-- Sidebar Start -->
                 <div class="col-lg-4">
@@ -53,19 +45,22 @@
                         <div class="section-title section-title-sm position-relative pb-3 mb-4">
                             <h3 class="mb-0">Berita Terbaru</h3>
                         </div>
-                        @foreach ($dataList as $berita )
+                        @foreach ($dataList as $row )
+                        @if ($berita->id != $row->id)
+                            
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
-                            $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$berita->thumbnail;
+                            $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$row->thumbnail;
                         @endphp
                         @if ($url !== false)
-                        <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$berita->thumbnail}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$row->thumbnail}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif
-                            <a href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}" class="fw-semi-bold d-flex align-items-center bg-light px-3 mb-0 text-decoration-none text-dark">{{$berita->judul}}
+                            <a href="{{ route('berita.detail', ['id_berita' => $row->id]) }}" class="fw-semi-bold d-flex align-items-center bg-light px-3 mb-0 text-decoration-none text-dark">{{$row->judul}}
                             </a>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                     <!-- Recent Post End -->

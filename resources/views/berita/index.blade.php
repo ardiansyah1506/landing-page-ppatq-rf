@@ -2,6 +2,9 @@
 @section('title')
 <title>Berita | PPATQ-RF</title>
 @endsection
+@section('styleCustom')
+
+@endsection
 @section('header')
 @endsection
 @section('content')
@@ -17,7 +20,7 @@
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="blog-img position-relative overflow-hidden">
-                                <div style="max-height: 200px; width:400px;">
+                                <div class="overflow-hidden">
                                     @php
                                     Carbon\Carbon::setLocale('id');
                                     $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$berita->thumbnail;
@@ -39,8 +42,7 @@
                                     <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
                                 </div>
                                 <h4 class="mb-3">{{$berita->judul}}</h4>
-                                <p>{{ Str::limit(strip_tags($berita->isi_berita),150) }}</p>
-                                <a class="text-uppercase text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Read More <i class="bi bi-arrow-right"></i></a>
+                                <p>{{ Str::limit(strip_tags($berita->isi_berita),150) }} <a class="text-uppercase text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a></p>
                             </div>
                         </div>
                     </div>
