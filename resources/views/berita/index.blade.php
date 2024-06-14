@@ -20,12 +20,12 @@
                                 <div style="max-height: 200px; width:400px;">
                                     @php
                                     Carbon\Carbon::setLocale('id');
-                                    $url = $berita->thumbnail;
+                                    $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$berita->thumbnail;
                                     $headers = get_headers($url);
                                     $exists = strpos($headers[0], '200');
                                 @endphp
                                 @if ($exists !== false)
-                                <img class="img-fluid" src="{{$berita->thumbnail}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$berita->thumbnail}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @else
                                     <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @endif
