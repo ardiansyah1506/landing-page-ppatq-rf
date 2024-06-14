@@ -33,7 +33,7 @@
             var selectorNewAnim = tabsNewAnim.find('li').length;
             var activeItemNewAnim = tabsNewAnim.find('.active');
             activeItemNewAnim.removeClass('active');
-            $('#santri').addClass('active');
+            $('#kamar').addClass('active');
             setTimeout(function() {
                 test();
             }, 100); // Slight delay to ensure elements are rendered

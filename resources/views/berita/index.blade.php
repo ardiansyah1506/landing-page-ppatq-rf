@@ -19,21 +19,22 @@
                             <div class="blog-img position-relative overflow-hidden">
                                 <div style="max-height: 200px; width:400px;">
                                     @php
-                                    $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                                    Carbon\Carbon::setLocale('id');
+                                    $url = $berita->thumbnail;
                                     $headers = get_headers($url);
                                     $exists = strpos($headers[0], '200');
                                 @endphp
                                 @if ($exists !== false)
-                                <img class="img-fluid" src="https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/{{$berita->thumbnail}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img class="img-fluid" src="{{$berita->thumbnail}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @else
-                                    <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @endif
                                 </div>
                             </div>
                             <div class="p-4">
                                 <div class="d-flex mb-3">
                                     <small class="me-2"><i class="far fa-user text-green me-2"></i>
-                                        {{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}
+                                        {{ $berita->nama_user != '' ? $berita->nama_user : 'Pembuat' }}
                                     </small>
                                     <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
                                 </div>

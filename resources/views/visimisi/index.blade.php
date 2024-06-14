@@ -3,7 +3,7 @@
 <title>Visi Misi | PPATQ-RF</title>
 @endsection
 @section('content')
-<div class="py-5 wow fadeInUp" data-wow-delay="0.1s">
+<div class="p-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="row">
         <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
                         <h2 class="fw-bold text-green text-uppercase text-green">Visi Dan Misi</h2>

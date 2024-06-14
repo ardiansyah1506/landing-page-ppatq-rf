@@ -23,16 +23,17 @@
 
                         <h1 class="mb-4">{{$berita->judul}}</h1>
                         @php
-                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/gambar_dalam/' . $berita->gambar_dalam;
+                            Carbon\Carbon::setLocale('id');
+                            $url = $berita->thumbnail;
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
                         @if ($exists !== false)
-                        <img class="img-fluid" src="https://manajemen.ppatq-rf.id/assets/img/upload/berita/gambar_dalam/{{$berita->gambar_dalam}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <img class="img-fluid" src="{{$berita->thumbnail}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif
-                        <div class="d-flex justify-content-end mt-4">
+                        <div class="d-flex justify-content-end mt-5">
                             <small class="me-2"><i class="far fa-user text-green me-2"></i>
                                 {{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}
                             </small>
@@ -57,16 +58,16 @@
                         @foreach ($dataList as $berita )
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
-                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/gambar_dalam/' . $berita->gambar_dalam;
+                            $url = $berita->thumbnail;
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
                         @if ($exists !== false)
-                        <img class="img-fluid" src="https://manajemen.ppatq-rf.id/assets/img/upload/berita/gambar_dalam/{{$berita->gambar_dalam}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <img class="img-fluid" src="{{$berita->thumbnail}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif
-                            <a href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">{{$berita->judul}}
+                            <a href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0 text-decoration-none text-dark">{{$berita->judul}}
                             </a>
                         </div>
                         @endforeach
