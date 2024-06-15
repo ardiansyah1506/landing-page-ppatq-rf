@@ -29,10 +29,10 @@
         </div>
 
         <!-- Santri Container -->
-        <div class="row" id="santri-container">
+        <div class="row d-flex justify-content-center" id="santri-container">
             <!-- Data santri akan ditambahkan melalui JavaScript -->
             @foreach ($data as $santri)
-                <div class="col-md-7 col-lg-3 wow fadeIn mb-4">
+                <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4">
                     <div class="card border-0 shadow-sm p-4 rounded">
                         <div class="d-flex justify-content-center align-items-center">
                             <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
@@ -108,14 +108,6 @@
             setTimeout(function() {
                 test();
             }, 100); // Slight delay to ensure elements are rendered
-
-            // Call test() when the window is resized
-            $(window).on('resize', function() {
-                setTimeout(function() {
-                    test();
-                }, 500);
-            });
-
 
             function fetchSantri(query) {
                 var _token = $('meta[name="csrf-token"]').attr('content');
@@ -202,8 +194,7 @@
                 if (query !== '') {
                     fetchSantri(query);
                 } else {
-                    fetchSantri(
-                        ''); // Panggil fetchSantri dengan parameter kosong jika query kosong
+                    fetchSantri(''); // Panggil fetchSantri dengan parameter kosong jika query kosong
                 }
             });
         });

@@ -18,7 +18,7 @@
         </div>
         <div class="row d-flex justify-content-center gap-2">
         @foreach ($data as $kelas)
-                <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-2 text-center mb-2 bg-green p-3 text-decoration-none text-white">{{ $kelas->name }}</a>
+                <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-4 col-sm-2 text-center mb-2 bg-green p-3 text-decoration-none text-white">{{ $kelas->name }}</a>
         @endforeach
         </div>
         @yield('indexKelas')
@@ -36,14 +36,6 @@
             setTimeout(function() {
                 test();
             }, 100); // Slight delay to ensure elements are rendered
-
-            // Call test() when the window is resized
-            $(window).on('resize', function() {
-                setTimeout(function() {
-                    test();
-                }, 500);
-            });
-
 
             function fetchSantri(query) {
                 var _token = $('meta[name="csrf-token"]').attr('content');

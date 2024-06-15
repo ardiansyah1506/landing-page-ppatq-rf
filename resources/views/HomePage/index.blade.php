@@ -9,7 +9,7 @@
         @foreach ($berita as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
             @php
-                $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $item->thumbnail;
+                $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/' . $item->thumbnail;
                 $headers = get_headers($url);
                 $exists = strpos($headers[0], '200');
             @endphp
@@ -131,9 +131,6 @@
     </div>
     <!-- Blog Start -->
     
-
-
-
 @endsection
 
 
@@ -149,14 +146,6 @@
         setTimeout(function() {
             test();
         }, 100); // Slight delay to ensure elements are rendered
-    
-        // Call test() when the window is resized
-        $(window).on('resize', function() {
-            setTimeout(function() {
-                test();
-            }, 500);
-        });
-    
     });
 </script>
 @endsection

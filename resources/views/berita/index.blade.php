@@ -2,9 +2,6 @@
 @section('title')
 <title>Berita | PPATQ-RF</title>
 @endsection
-@section('styleCustom')
-
-@endsection
 @section('header')
 @endsection
 @section('content')
@@ -70,14 +67,6 @@
         setTimeout(function() {
             test();
         }, 100); // Slight delay to ensure elements are rendered
-    
-        // Call test() when the window is resized
-        $(window).on('resize', function() {
-            setTimeout(function() {
-                test();
-            }, 500);
-        });
-    
     });
 </script>
 @endsection
