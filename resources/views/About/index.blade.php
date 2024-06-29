@@ -4,9 +4,6 @@
 @endsection
 
 @section('content')
-
- 
-
 @include('About.content')
 @include('metode.content')
 

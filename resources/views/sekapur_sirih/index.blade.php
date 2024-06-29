@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row ">
+    <div class="row mt-4">
         <div class="col-lg-6 bg-white p-5">
             <div class="text-center">
                 <img src="{{asset('img/KH.-Djaelani.png')}}" class="img-fluid mb-4" style="max-width: 200px;">

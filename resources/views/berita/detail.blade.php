@@ -1,6 +1,6 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Detail Berita</title>
+<title>{{ $berita->judul }} | PPATQ-RF</title>
 @endsection
 
 
@@ -18,14 +18,21 @@
                         <h1 class="mb-4">{{$berita->judul}}</h1>
                         @php
                             Carbon\Carbon::setLocale('id');
-                            $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$berita->thumbnail;
+                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                            $headers = get_headers($url);
+                            $exists = strpos($headers[0], '200');
                         @endphp
-                        @if ($url !== false)
-                        <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$berita->thumbnail}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        @if ($exists !== false)
+                        <img class="img-fluid" src="{{ $url }}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif
                         <div class="d-flex justify-content-end mt-5">
+                        @php
+                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/foto_isi/' . $berita->gambar_dalam;
+                            $headers = get_headers($url);
+                            $exists = strpos($headers[0], '200');
+                        @endphp
                             <small class="me-2"><i class="far fa-user text-green me-2"></i>
                                 {{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}
                             </small>
@@ -50,10 +57,12 @@
                             
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
-                            $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$row->thumbnail;
+                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                            $headers = get_headers($url);
+                            $exists = strpos($headers[0], '200');
                         @endphp
-                        @if ($url !== false)
-                        <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$row->thumbnail}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        @if ($exists !== false)
+                        <img class="img-fluid" src="{{$url}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif

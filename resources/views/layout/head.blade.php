@@ -21,3 +21,13 @@
         <!-- Template Stylesheet -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+                ::selection {
+                        background-color: #00c14d; /* Ganti dengan warna latar belakang yang Anda inginkan */
+                        color: #ffffff; /* Ganti dengan warna teks yang Anda inginkan */
+                }
+                        
+                body{
+                        color: #4d4d4d;
+                }
+        </style>

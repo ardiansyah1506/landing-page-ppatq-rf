@@ -54,7 +54,6 @@ class SantriController extends Controller
             ->leftJoin('employee_new AS guru_murroby', 'ref_kamar.employee_id', '=', 'guru_murroby.id') // Alias for first employee_new join
             ->leftJoin('employee_new AS wali_kelas', 'ref_kelas.employee_id', '=', 'wali_kelas.id'); // Alias for second employee_new join
     
-            // Jika ada kata kunci pencarian, tambahkan kondisi untuk mencari
             if (!empty($search)) {
                 $query->where(function($subQuery) use ($search) {
                     $subQuery->where('santri_detail.nama', 'like', '%' . $search . '%')
@@ -63,14 +62,10 @@ class SantriController extends Controller
                              ->orWhere('guru_murroby.nama', 'like', '%' . $search . '%') // Correct alias used
                              ->orWhere('wali_kelas.nama', 'like', '%' . $search . '%'); // Correct alias used
                 });
-                $data = $query->get();
-            }else{
-
-                $data = $query->paginate(8);
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-    
+            $data = $query->paginate(8);
             // Kembalikan data dalam format JSON
             return response()->json($data);
     

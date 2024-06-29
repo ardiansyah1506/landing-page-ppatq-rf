@@ -9,7 +9,7 @@
         @foreach ($berita as $key => $item)
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
             @php
-                $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/' . $item->thumbnail;
+                $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $item->thumbnail;
                 $headers = get_headers($url);
                 $exists = strpos($headers[0], '200');
             @endphp

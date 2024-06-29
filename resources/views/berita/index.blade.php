@@ -20,23 +20,20 @@
                                 <div class="overflow-hidden">
                                     @php
                                     Carbon\Carbon::setLocale('id');
-                                    $url = 'https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/'.$berita->thumbnail;
+                                    $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
                                     $headers = get_headers($url);
                                     $exists = strpos($headers[0], '200');
                                 @endphp
                                 @if ($exists !== false)
-                                <img class="img-fluid" src="https://www.ppatq-rf.sch.id/wp-content/uploads/2024/06/{{$berita->thumbnail}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img class="img-fluid rounded" src="{{$url}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @else
-                                    <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <img class="img-fluid rounded" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 @endif
                                 </div>
                             </div>
                             <div class="p-4">
                                 <div class="d-flex mb-3">
-                                    <small class="me-2"><i class="far fa-user text-green me-2"></i>
-                                        {{ $berita->nama_user != '' ? $berita->nama_user : 'Pembuat' }}
-                                    </small>
-                                    <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
+                                    <small class="me-2 fst-italic"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->diffForHumans() }}</small>
                                 </div>
                                 <h4 class="mb-3">{{$berita->judul}}</h4>
                                 <p>{{ Str::limit(strip_tags($berita->isi_berita),150) }} <a class="text-uppercase text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a></p>

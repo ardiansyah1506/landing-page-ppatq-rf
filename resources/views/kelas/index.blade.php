@@ -21,7 +21,6 @@
                 <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-4 col-sm-2 text-center mb-2 bg-green p-3 text-decoration-none text-white">{{ $kelas->name }}</a>
         @endforeach
         </div>
-        @yield('indexKelas')
     </div>
 @endsection
 
