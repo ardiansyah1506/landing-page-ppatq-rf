@@ -9,17 +9,18 @@ class HomePageController extends Controller
 {
     
     public function index(){
-        $totalSantri = DB::table('santri')->count();
-        $totalPengajar = DB::table('tb_guru')->count(); 
-        $totalAlumni = DB::table('tb_alumni')->count(); 
-
-        $berita = DB::table('berita')
-        ->select('berita.id', 'berita.kategori_id', 'berita.judul', 'berita.slug', 'berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'berita.user_id', 'detail_user.nama AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
-        ->leftJoin('detail_user', 'berita.user_id', '=', 'detail_user.id')
-        ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
-        ->latest() // Panggil latest() setelah selesai menambahkan kondisi atau memilih kolom
-        ->get(3);
-        return view('HomePage.index', compact('totalSantri', 'totalPengajar', 'totalAlumni','berita'));
+        try {
+            $data = DB::table('berita')
+                ->select('berita.id','berita.kategori_id', 'berita.judul', 'berita.slug','berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'berita.user_id', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
+                ->leftJoin('users', 'berita.user_id', '=', 'users.id')
+                ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
+                ->orderBy('berita.created_at', 'desc');
+                $data = $data->paginate(10);
+    
+            return view('HomePage.index', compact('data'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
     
     public function About(){
