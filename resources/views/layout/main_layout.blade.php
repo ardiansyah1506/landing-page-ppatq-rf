@@ -69,7 +69,7 @@
         <!-- Footer Start -->
             <div class="container">
                 <div class="row justify-content-end">
-                        <div class="d-flex align-items-center justify-content-center p-4" >
+                        <div class="d-flex align-items-center justify-content-center p-4 text-center" >
                             <p class="text-secondary">Copyright ©{{ now()->year }} PPATQ RAUDLATUL FALAH</p> 
                         </div>
                 </div>

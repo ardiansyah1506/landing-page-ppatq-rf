@@ -33,11 +33,20 @@
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
-                            <small class="me-2"><i class="far fa-user text-green me-2"></i>
-                                {{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}
-                            </small>
-                            <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
-                            <small class="me-2"><i class="far fa-list-alt text-green me-2"></i>{{$berita->nama_kategori}}</small>
+                        <div class="col-7">
+                            <a target="_blank" class="fs-4" href="https://www.facebook.com/sharer/sharer.php?u={{ route('berita.detail', ['id_berita' => $berita->id]) }}"><i class="bi bi-facebook"></i></a>
+                        </div>
+                        <div class="col d-flex">
+                            <p>
+                                <small class="me-2"><i class="far fa-user text-green me-2"></i>{{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}</small>
+                            </p>
+                            <p>
+                                <small class="me-2"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->translatedFormat('d F Y') }}</small>
+                            </p>
+                            <p>
+                                <small class="me-2"><i class="far fa-list-alt text-green me-2"></i>{{$berita->nama_kategori}}</small>
+                            </p>
+                        </div>
                         </div>
                         <p>{!! $berita->isi_berita !!}</p>
                     </div>
@@ -66,8 +75,10 @@
                         @else
                         <img class="img-fluid" src="{{asset('img/auth-cover-login-mask-light.png')}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         @endif
-                            <a href="{{ route('berita.detail', ['id_berita' => $row->id]) }}" class="fw-semi-bold d-flex align-items-center bg-light px-3 mb-0 text-decoration-none text-dark">{{$row->judul}}
-                            </a>
+                        <div class="d-flex flex-column px-3">
+                            <a href="{{ route('berita.detail', ['id_berita' => $row->id]) }}" class="fw-semi-bold d-flex align-items-center bg-light mb-0 text-decoration-none text-dark">{{$row->judul}}</a>
+                            <p>{{ Str::limit(strip_tags($row->isi_berita),50) }}</p>
+                        </div>
                         </div>
                         @endif
                         @endforeach

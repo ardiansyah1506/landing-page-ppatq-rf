@@ -36,7 +36,8 @@
                                     <small class="me-2 fst-italic"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->diffForHumans() }}</small>
                                 </div>
                                 <h4 class="mb-3">{{$berita->judul}}</h4>
-                                <p>{{ Str::limit(strip_tags($berita->isi_berita),150) }} <a class="text-uppercase text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a></p>
+                                <p class="mb-0">{{ Str::limit(strip_tags($berita->isi_berita),150) }}</p>
+                                <a class="text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

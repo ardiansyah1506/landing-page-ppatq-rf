@@ -7,6 +7,8 @@ $controller_path = 'App\Http\Controllers';
 
 
 Route::get('/', $controller_path .'\HomePageController@index')->name('HomePage');
+Route::get('/santri-random', $controller_path .'\HomePageController@getSantriRandom')->name('santriRandom');
+Route::get('/pegawai-random', $controller_path .'\HomePageController@getPegawaiRandom')->name('pegawaiRandom');
 Route::get('/about', $controller_path .'\HomePageController@About')->name('aboutPage');
 Route::get('/visi-misi', $controller_path .'\HomePageController@visimisi')->name('visimisi');
 Route::get('/sekapur-sirih', $controller_path .'\HomePageController@sekapursirih')->name('sekapursirih');
