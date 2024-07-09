@@ -66,7 +66,7 @@
                             
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
-                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $row->thumbnail;
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
