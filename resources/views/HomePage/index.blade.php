@@ -34,9 +34,13 @@
                                         $exists = strpos($headers[0], '200');
                                     @endphp
                                     @if ($exists !== false)
-                                    <img class="img-fluid rounded" src="{{$url}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">
+                                        <img class="img-fluid rounded" src="{{$url}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    </a>
                                     @else
+                                    <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">
                                         <img class="img-fluid rounded" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    </a>
                                     @endif
                                     </div>
                                 </div>
@@ -104,7 +108,7 @@
                     <div class="row mt-5">
                         <div class="col-12 col-sm-9 px-4">
                             <div class="d-flex flex-column flex-md-row p-4 gap-5 shadow-sm">
-                                <img src="http://landing-page-ppatq-rf.test/img/abah-sohib.png"
+                                <img src="https://ppatq-rf.sch.id/wp-content/uploads/2013/04/abah-sohib.png"
                                 class="rounded-circle img-fluid mb-4 mb-lg-0 shadow-sm" alt="foto abah" width="100" height="200">
                                 <figure>
                                     <blockquote class="blockquote mb-4">

@@ -25,9 +25,13 @@
                                     $exists = strpos($headers[0], '200');
                                 @endphp
                                 @if ($exists !== false)
-                                <img class="img-fluid rounded" src="{{$url}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">
+                                    <img class="img-fluid rounded" src="{{$url}}"  alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                </a>
                                 @else
+                                <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">
                                     <img class="img-fluid rounded" src="{{asset('img/auth-cover-login-mask-light.png')}}"   alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                </a>
                                 @endif
                                 </div>
                             </div>
@@ -35,7 +39,7 @@
                                 <div class="d-flex mb-3">
                                     <small class="me-2 fst-italic"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->diffForHumans() }}</small>
                                 </div>
-                                <h4 class="mb-3">{{$berita->judul}}</h4>
+                                <h4 class="mb-3"><a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">{{$berita->judul}}</a></h4>
                                 <p class="mb-0">{{ Str::limit(strip_tags($berita->isi_berita),150) }}</p>
                                 <a class="text-green" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
                             </div>
