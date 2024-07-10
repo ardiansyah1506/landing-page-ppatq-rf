@@ -33,10 +33,10 @@
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
-                        <div class="col-7">
+                        <div class="col col-sm-7">
                             <a target="_blank" class="fs-4" href="https://www.facebook.com/sharer/sharer.php?u={{ route('berita.detail', ['id_berita' => $berita->id]) }}"><i class="bi bi-facebook"></i></a>
                         </div>
-                        <div class="col d-flex">
+                        <div class="col col-sm-5 d-sm-flex">
                             <p>
                                 <small class="me-2"><i class="far fa-user text-green me-2"></i>{{ $berita->nama_user != '' ? $berita->nama_user : 'Annonymous' }}</small>
                             </p>
