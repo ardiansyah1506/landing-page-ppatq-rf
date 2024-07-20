@@ -7,6 +7,10 @@
 <div class="div">
     <iframe loading="lazy" title="PONDOK PESANTREN ANAK TAHFIDZUL QURAN RAUDLATUL FALAH | Bermi Gembong Pati Jawa Tengah Indonesia" src="https://www.youtube.com/embed/V_Q4hHxonGg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
 </div>
+@php
+    use Carbon\Carbon;
+    Carbon::setLocale('id');
+@endphp
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container w-100">
         <div class="row mb-3">
@@ -22,6 +26,7 @@
                             <a href="{{ route('berita') }}" class="fst-italic text-gray text-all-news">|  Semua Berita</a>
                         </div>
                     </div>
+                    @if ($beritas && !$beritas->isEmpty())                        
                     @foreach ($beritas as $berita)
                         <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                             <div class="blog-item bg-light rounded overflow-hidden">
@@ -55,6 +60,11 @@
                             </div>
                         </div>
                     @endforeach
+                    @else
+                        <div class="text-center">
+                            <small class="text-muted  border-bottom">Berita Kosong</small>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col mt-5 mt-sm-0">
@@ -70,19 +80,25 @@
                 </div>
                 
                 <div class="col mt-2 px-2">
+                    @if($agendas && !$agendas->isEmpty())
                     @foreach ($agendas as $agenda)
                     <div class="row mb-4 border-bottom py-2">
                         <div class="col-3 d-flex flex-column align-items-center text-white fw-bold">
-                            <span class="text-green px-2">{{ substr($agenda->tanggal_mulai, 8, 2)  }}</span>
-                            <span class="text-green px-2">{{ $agenda->bulan  }}</span>
+                            <span class="text-green px-2">{{ Carbon::parse($agenda->tanggal_mulai)->translatedFormat('j')}}</span>
+                            <span class="text-green px-2">{{ Carbon::parse($agenda->tanggal_mulai)->translatedFormat('F')}}</span>
                         </div>
                         <div class="col">
                             <h6 class="mb-0">{{ $agenda->judul }}</h6>
                             <small>{{ Str::limit(strip_tags($agenda->isi),45) }}</small>
-                            <p class="fst-italic bg-green text-white px-1 rounded text-center">{{ \Carbon\Carbon::parse($agenda->tanggal_mulai)->translatedFormat('d F Y') }}</p>
+                            <p class="fst-italic bg-green text-white px-1 rounded text-center">{{ Carbon::parse($agenda->tanggal_mulai)->translatedFormat('d F Y') }}</p>
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <div class="text-center">
+                        <small class="text-muted  border-bottom">Agenda Kosong</small>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

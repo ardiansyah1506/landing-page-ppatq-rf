@@ -26,7 +26,7 @@ class SantriController extends Controller
         ->inRandomOrder();
     
     
-    $data = $query->paginate(8);
+    $data = $query->paginate(12);
     
         return view('santri.index', ['data' => $data]);
     }
@@ -67,7 +67,7 @@ class SantriController extends Controller
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-            $data = $query->paginate(8);
+            $data = $query->paginate(12);
             // Kembalikan data dalam format JSON
             return response()->json($data);
     

@@ -17,27 +17,12 @@ class HomePageController extends Controller
                 ->paginate(3);
 
                 $data['agendas'] = DB::table('agenda')
-                ->select('judul', 'isi', 'tanggal_mulai', DB::raw('
-                    CASE 
-                        WHEN MONTH(tanggal_mulai) = 1 THEN "Januari"
-                        WHEN MONTH(tanggal_mulai) = 2 THEN "Februari"
-                        WHEN MONTH(tanggal_mulai) = 3 THEN "Maret"
-                        WHEN MONTH(tanggal_mulai) = 4 THEN "April"
-                        WHEN MONTH(tanggal_mulai) = 5 THEN "Mei"
-                        WHEN MONTH(tanggal_mulai) = 6 THEN "Juni"
-                        WHEN MONTH(tanggal_mulai) = 7 THEN "Juli"
-                        WHEN MONTH(tanggal_mulai) = 8 THEN "Agustus"
-                        WHEN MONTH(tanggal_mulai) = 9 THEN "September"
-                        WHEN MONTH(tanggal_mulai) = 10 THEN "Oktober"
-                        WHEN MONTH(tanggal_mulai) = 11 THEN "November"
-                        WHEN MONTH(tanggal_mulai) = 12 THEN "Desember"
-                    END as bulan'))
+                ->select('judul', 'isi', 'tanggal_mulai')
                 ->whereNull('deleted_at')
                 ->where('tanggal_mulai', '>=', DB::raw('CURDATE()'))
                 ->orderByRaw('ABS(DATEDIFF(NOW(), tanggal_mulai))')
                 ->limit(5)
                 ->get();
-
 
                 $data['jumlahSiswaLaki'] = DB::table('santri_detail')->where([
                     'status' => 0,

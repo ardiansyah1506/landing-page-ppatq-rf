@@ -18,9 +18,15 @@
                     </div>
             </div>
             <div class="row  d-flex justify-content-center  gap-2">
+                @if($data && !$data->isEmpty())
                 @foreach ($data as $kamar)
                         <a href="/kamar/{{ $kamar->id}}" class="px-3 col-4 col-sm-2 text-center mb-2 bg-green p-3 text-decoration-none text-white">Kamar {{ $kamar->name }}</a>
                 @endforeach
+                @else
+                <div class="text-center">
+                    <small class="text-muted  border-bottom">Kamar Kosong</small>
+                </div>
+                @endif
                 </div>
         </div>
     </div>

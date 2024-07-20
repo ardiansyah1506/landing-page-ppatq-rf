@@ -42,50 +42,21 @@
                                     class="w-50 img-thumbnail" alt="foto profil {{ $santri->nama }}">
                             </div>
                             <div class="p-1 d-flex flex-column gap-5">
-                                <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama }}</h5>
-                                <ul class="list-unstyled w-100 mb-4">
-                                    <div class="row mb-3 text-center gap-1">
-                                            <div class="col shadow-sm">
-                                                <p class="text-white bg-green rounded-bottom">
-                                                    Kelas
-                                                </p>
-                                                <h6>
-                                                    {{ $santri->kelas ?? '-' }}
-                                                </h6>
-                                            </div>
-                                            <div class="col shadow-sm">
-                                                <p class="bg-green text-white rounded-bottom">
-                                                    Kota
-                                                </p>
-                                                <h6 class="text-uppercase">
-                                                    {{ $santri->kecamatan ?? '-' }}
-                                                </h6>
-                                            </div>
-                                    </div>
-                                    <div class="row">
-                                        <li class="col-12 mb-3 text-center shadow-sm">
-                                            <div class="d-flex flex-column align-items-center ">
-                                                <p class="mb-2 col-12 bg-green text-white rounded-bottom">
-                                                    Wali Kelas
-                                                </p>
-                                                <p>
-                                                    {{ $santri->wali_kelas ?? '-' }}
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="col-12 text-center shadow-sm">
-                                            <div class="d-flex flex-column align-items-center">
-                                                <p class="mb-2 col-12 bg-green text-white rounded-bottom">
-                                                    Guru Murroby
-                                                </p>
-                                                <p>
-                                                    {{ $santri->guru_murroby ?? '-' }}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </div>
-
-                                </ul>
+                                <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama ?? '-'}}</h5>
+                                <table class="table" style="font-size: 14px">
+                                    <tr>
+                                        <th scope="row"><i class="bi bi-house-door-fill"></i> Kelas :</th>
+                                        <td class="text-uppercase">{{ $santri->kelas ?? " - "}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="width: 126px"><i class="bi bi-file-person-fill"></i> Murroby :</th>
+                                        <td class="text-uppercase">{{ $santri->guru_murroby ?? " - "}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Wali Kelas :</th>
+                                        <td class="text-uppercase">{{ $santri->wali_kelas ?? " - "}}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -127,57 +98,32 @@
                         // Iterasi setiap santri dan tambahkan ke tabel
                         $.each(data.data, function(index, santri) {
                             $('#santri-container').append(`
-                            <div class="col-md-7 col-lg-3 wow fadeIn mb-4">
-                                <div class="card border-0 shadow-sm p-4 rounded">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo ?? '-'}"
-                                            class="w-50 img-thumbnail" alt="foto profil ${santri.nama ?? '-'}">
+                            <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4 position-relative">
+                                <div class="card border-0 shadow-sm rounded d-flex align-items-center">
+                                    <div class="col-11 border border-success mt-1">
                                     </div>
-                                    <div class="p-1 d-flex flex-column gap-5">
-                                        <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama ?? '-'}</h5>
-                                        <ul class="list-unstyled w-100 mb-4">
-                                            <div class="row mb-3 text-center gap-1">
-                                                    <div class="col shadow-sm">
-                                                        <p class="text-white bg-green rounded-bottom">
-                                                            Kelas
-                                                        </p>
-                                                        <h6>
-                                                            ${ santri.kelas ?? '-' }
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col shadow-sm">
-                                                        <p class="bg-green text-white rounded-bottom">
-                                                            Kota
-                                                        </p>
-                                                        <h6 class="text-uppercase">
-                                                            ${ santri.kecamatan ?? '-' }
-                                                        </h6>
-                                                    </div>
-                                            </div>
-                                            <div class="row">
-                                                <li class="col-12 mb-3 text-center shadow-sm">
-                                                    <div class="d-flex flex-column align-items-center ">
-                                                        <p class="mb-2 col-12 bg-green text-white rounded-bottom">
-                                                            Wali Kelas
-                                                        </p>
-                                                        <p>
-                                                            ${santri.wali_kelas ?? '-'}
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                                <li class="col-12 text-center shadow-sm">
-                                                    <div class="d-flex flex-column align-items-center">
-                                                        <p class="mb-2 col-12 bg-green text-white rounded-bottom">
-                                                            Guru Murroby
-                                                        </p>
-                                                        <p>
-                                                            ${ santri.guru_murroby ?? '-' }
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                            </div>
-
-                                        </ul>
+                                    <div class="p-4">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo }"
+                                                class="w-50 img-thumbnail" alt="foto profil ${santri.nama }">
+                                        </div>
+                                        <div class="p-1 d-flex flex-column gap-5">
+                                            <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama ?? '-'}</h5>
+                                            <table class="table" style="font-size: 14px">
+                                                <tr>
+                                                    <th scope="row">Kelas :</th>
+                                                    <td class="text-uppercase">${ santri.kelas ?? " - "}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" style="width: 126px">Murroby :</th>
+                                                    <td class="text-uppercase">${ santri.guru_murroby ?? " - "}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" style="width: 126px">Wali Kelas :</th>
+                                                    <td class="text-uppercase">${ santri.wali_kelas ?? " - "}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>    

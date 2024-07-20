@@ -13,6 +13,7 @@
                 <small class="mb-0">Kumpulan Berita PPATQ RAUDLATUL FALAH</small>
             </div>
             <div class="row">
+                @if ($data && !$data->isEmpty())
                 @foreach ($data as $berita)
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
                         <div class="blog-item bg-light rounded overflow-hidden">
@@ -46,6 +47,11 @@
                         </div>
                     </div>
                 @endforeach
+                @else
+                <div class="text-center">
+                    <small class="text-muted  border-bottom">Berita Kosong</small>
+                </div>
+                @endif
             </div>
         </div>
 
