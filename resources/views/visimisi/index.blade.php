@@ -12,7 +12,7 @@
     </div>
     <div class="row py-5 border-top">
         <div class="col-12 col-sm-6 text-center">
-            <img class="w-100 rounded" src="{{asset('img/visi1.jpg')}}" alt="Visi Image">
+            <img class="w-100 rounded img img-thumbnail" src="{{asset('img/visi1.jpg')}}" alt="Visi Image">
         </div>
         <div class="col-12 col-sm-6 mt-4">
             <h4 class="fw-bold text-green text-uppercase text-green text-center fs-3 mb-4 mt-4">Visi</h4>
@@ -21,7 +21,7 @@
     </div>
     <div class="row py-5 border-top">
         <div class="col-12 col-sm-6 order-sm-2 order-1 text-center">
-            <img class="w-100 rounded" src="{{asset('img/misi1.jpg')}}" alt="Visi Image">
+            <img class="w-100 rounded img img-thumbnail" src="{{asset('img/misi1.jpg')}}" alt="Visi Image">
         </div>
         <div class="col-12 col-sm-6 order-sm-1 order-2">
             <h4 class="fw-bold text-green text-uppercase text-green text-center fs-3 mb-4 mt-4">Misi</h4>
@@ -43,7 +43,7 @@
         $('#visimisi').addClass('active');
         setTimeout(function() {
             test();
-        }, 100); // Slight delay to ensure elements are rendered
+        }, 100);
     });
 </script>
 @endsection

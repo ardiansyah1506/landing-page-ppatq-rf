@@ -21,9 +21,23 @@
                                 <div class="overflow-hidden">
                                     @php
                                     Carbon\Carbon::setLocale('id');
-                                    $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
-                                    $headers = get_headers($url);
-                                    $exists = strpos($headers[0], '200');
+                                    $url = $berita->thumbnail;
+
+                                    if (!empty($url)) {
+                                        // Dapatkan headers dari URL
+                                        $headers = @get_headers($url);
+                                        
+                                        // Periksa apakah headers berhasil didapatkan
+                                        if ($headers !== false) {
+                                            // Cek apakah respons HTTP adalah 200 OK
+                                            $exists = strpos($headers[0], '200') !== false;
+                                        } else {
+                                            $exists = false; // Tidak dapat mendapatkan headers
+                                        }
+                                    } else {
+                                        $exists = false; // URL kosong  
+                                    }
+
                                 @endphp
                                 @if ($exists !== false)
                                 <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">

@@ -14,11 +14,10 @@
                 <div class="col-lg-8">
                     <!-- Blog Detail Start -->
                     <div class="mb-5">
-
                         <h1 class="mb-4">{{$berita->judul}}</h1>
                         @php
                             Carbon\Carbon::setLocale('id');
-                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                            $url = $berita->thumbnail;
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp
@@ -66,7 +65,7 @@
                             
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
-                            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $row->thumbnail;
+                            $url = $row->thumbnail;
                             $headers = get_headers($url);
                             $exists = strpos($headers[0], '200');
                         @endphp

@@ -16,6 +16,8 @@ class KelasController extends Controller
             ->leftJoin('employees', 'ref_kelas.employee_id','=','employees.id')
             ->get();
 
+            // $data = [];
+
             return view('kelas.index', compact('data'));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

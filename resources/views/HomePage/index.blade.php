@@ -33,8 +33,7 @@
                                 <div class="blog-img position-relative overflow-hidden">
                                     <div class="overflow-hidden">
                                         @php
-                                        Carbon\Carbon::setLocale('id');
-                                        $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/' . $berita->thumbnail;
+                                        $url = $berita->thumbnail;
                                         $headers = get_headers($url);
                                         $exists = strpos($headers[0], '200');
                                     @endphp

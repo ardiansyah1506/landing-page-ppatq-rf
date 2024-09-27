@@ -10,7 +10,9 @@
 
 @section('content')
     <div class="container-fluid py-5">
-        <a href="{{Route('kelas')}}" class="text-decoration-none text-white bg-green p-2 rounded"><i class="bi bi-backspace-fill"></i> Kembali</a>
+        <a href="{{ url()->previous() }}" class="text-decoration-none text-white bg-green p-2 rounded">
+            <i class="bi bi-backspace-fill"></i> Kembali
+        </a>
         <div class="row" id="kelas-container">
             <h3 class="text-center text-green mb-4 text-uppercase">Wali Kelas</h3>
             <!-- Data santri akan ditambahkan melalui JavaScript -->
@@ -36,7 +38,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Santri Container -->
         <div class="row" id="santri-container">
             <div class="text-center mb-4">
@@ -65,7 +66,7 @@
                                     </div>
                                     <div class="col shadow-sm">
                                         <p class="bg-green text-white rounded-bottom mb-0">
-                                            Kota
+                                            Kecamatan
                                         </p>
                                         <h6 class="text-uppercase p-3">
                                             {{ $santri->kecamatan ?? '-' }}
