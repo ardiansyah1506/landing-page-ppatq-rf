@@ -17,15 +17,15 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center gap-2">
-        @if ($data && !$data->isEmpty())
-        @foreach ($data as $kelas)
-                <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-4 col-sm-2 text-center mb-2 bg-green p-3 text-decoration-none text-white">{{ $kelas->name }}</a>
-        @endforeach
-        @else
-        <div class="text-center">
-            <small class="text-muted  border-bottom">Kelas Kosong</small>
-        </div>
-        @endif
+            @if ($data && !$data->isEmpty())
+                @foreach ($data as $kelas)
+                        <a href="/kelas/{{ $kelas->id_kelas}}" class="px-3 col-6 col-sm-4 text-center mb-2 bg-green p-3 text-decoration-none text-white rounded">{{ $kelas->name }}</a>
+                @endforeach
+            @else
+                <div class="text-center">
+                    <small class="text-muted  border-bottom">Kelas Kosong</small>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
@@ -41,81 +41,6 @@
             setTimeout(function() {
                 test();
             }, 100); // Slight delay to ensure elements are rendered
-
-            function fetchSantri(query) {
-                var _token = $('meta[name="csrf-token"]').attr('content');
-                $.ajax({
-                    url: "{{ route('get_santri') }}",
-                    method: "POST",
-                    data: {
-                        search: query, // Ubah search menjadi query
-                        _token: _token
-                    },
-                    success: function(data) {
-                        $('#santri-container').empty(); // Kosongkan tabel sebelum menambahkan data baru
-                        // Iterasi setiap santri dan tambahkan ke tabel
-                        $.each(data.data, function(index, santri) {
-                            $('#santri-container').append(`
-                            <div class="col-md-7 col-lg-3 mb-3 wow fadeIn">
-            <div class="card border-0 shadow p-4">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo}"
-                         class="w-50">
-                </div>
-                <div class="card-body d-flex flex-column gap-5">
-                    <h5 class="fs-5 mb-0 text-center">${santri.nama}</h5>
-                    <ul class="list-unstyled w-100 mb-4">
-                        <div class="d-flex justify-content-between">
-                            <li class="mb-3">
-                                <div class="d-flex flex-column align-items-center">
-                                    <small>Kelas</small>
-                                    <h6>${santri.kelas ?? '-'}</h6>
-                                </div>
-                            </li>
-                            <li class="mb-3">
-                                <div class="d-flex flex-column align-items-center">
-                                    <small>Kota</small>
-                                    <h6>${santri.kecamatan ?? '-'}</h6>
-                                </div>
-                            </li>
-                        </div>
-                        <li class="mb-3">
-                            <div class="d-flex flex-column align-items-center">
-                                <p>Wali Kelas</p>
-                                <p>${santri.wali_kelas ?? '-'}</p>
-                            </div>
-                        </li>
-                        <li class="mb-3">
-                            <div class="d-flex flex-column align-items-center">
-                                <p>Guru Murroby</p>
-                                <p>${santri.guru_murroby ?? '-'}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>    
-                            `);
-                        });
-                        // Menambahkan pagination
-                        $('.pagination-container').html(data.links);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            }
-
-            // Listen for keyup event on #searchInput
-            $('#searchInput').keyup(function(e) {
-                var query = $(this).val();
-                if (query !== '') {
-                    fetchSantri(query);
-                } else {
-                    fetchSantri(
-                        ''); // Panggil fetchSantri dengan parameter kosong jika query kosong
-                }
-            });
         });
     </script>
 @endsection
