@@ -6,7 +6,7 @@
 @endsection
 @section('content')
     <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container w-100">
             <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
                 <h2 class="fw-bold text-green text-uppercase text-green">Berita PPATQ</h2>

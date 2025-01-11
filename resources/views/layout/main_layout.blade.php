@@ -48,7 +48,10 @@
                     <a class="nav-link" href="{{Route('visimisi')}}"><i class="bi bi-compass"></i>Visi dan Misi</a>
                 </li>
                 <li class="nav-item" id="santri">
-                    <a class="nav-link" href="{{Route('santri')}}"><i class="bi bi-person"></i>Santri</a>
+                    <a class="nav-link" href="{{Route('santri')}}"><i class="bi bi-person"></i>Santri/Alumni</a>
+                </li>
+                <li class="nav-item" id="galeri">
+                    <a class="nav-link" href="{{ Route('galeri') }}"><i class="bi bi-image"></i>Galeri</a>
                 </li>
                 <li class="nav-item" id="berita">
                     <a class="nav-link" href="{{Route('berita')}}"><i class="bi bi-newspaper"></i>Berita</a>
@@ -69,16 +72,15 @@
         <!-- Footer Start -->
             <div class="container">
                 <div class="row justify-content-end">
-                        <div class="d-flex align-items-center justify-content-center p-4 text-center" >
+                        <div class="d-flex align-items-center justify-content-center p-3 text-center" >
                             <p class="text-secondary">Copyright ©2023-{{ now()->year }} PPATQ RAUDLATUL FALAH</p> 
                         </div>
                 </div>
             </div>
     
-    <!-- Back to Top -->
-    <a href="#top" class="btn btn-lg btn-success btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-            <!-- Footer End -->
+            <!-- Back to Top -->
+            <a href="#top" class="btn btn-lg btn-success btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Footer End -->
     </div>
     
 <script>

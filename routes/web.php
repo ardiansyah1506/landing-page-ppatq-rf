@@ -15,6 +15,9 @@ Route::get('/sekapur-sirih', $controller_path .'\HomePageController@sekapursirih
 
 Route::get('/santri', $controller_path .'\SantriController@index')->name('santri');
 Route::post('/get_santri', $controller_path .'\SantriController@get_santri')->name('get_santri');
+Route::post('/get_alumni', $controller_path .'\SantriController@get_alumni')->name('get_alumni');
+
+Route::get('/galeri', $controller_path .'\GaleriController@index')->name('galeri');
 
 Route::get('/berita', $controller_path .'\BeritaController@index')->name('berita');
 Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')->name('berita.detail');

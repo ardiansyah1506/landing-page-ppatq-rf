@@ -42,6 +42,14 @@ class HomePageController extends Controller
                 ->whereIn('jabatan_new',['murobby','ustadz','tahfidz'])
                 ->count();
 
+                $data['fasilitas'] = DB::table('fasilitas')
+                ->where('published', 1)
+                ->get();
+
+                $data['galeri'] = DB::table('galeri')
+                ->where('published', 1)
+                ->get();
+
             return view('HomePage.index', $data);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

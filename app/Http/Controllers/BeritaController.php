@@ -38,7 +38,7 @@ class BeritaController extends Controller
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
                 ->latest()
-                ->limit(4) // Panggil latest() setelah selesai menambahkan kondisi atau memilih kolom
+                ->limit(4)
                 ->get();
     
             if (!$berita) {

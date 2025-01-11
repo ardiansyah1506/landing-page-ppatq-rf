@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="row  d-flex justify-content-center" id="kamar-container">
             <div class="col-12">
                     <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
@@ -20,7 +20,10 @@
             <div class="row d-flex justify-content-center gap-2">
                 @if($data && !$data->isEmpty())
                 @foreach ($data as $kamar)
-                        <a href="/kamar/{{ $kamar->id}}" class="px-3 col-4 col-sm-4 rounded text-center mb-2 bg-green p-3 text-decoration-none text-white">{{ $kamar->guru_murroby }}</a>
+                    <div class="px-3 col-4 col-sm-4 rounded text-center mb-2 bg-green p-3">
+                        <i class="bi bi-people fs-2 text-white"></i>
+                        <a href="/kamar/{{ $kamar->id}}" class="text-decoration-none text-white fw-bold">{{ $kamar->guru_murroby }}</a>
+                    </div>
                 @endforeach
                 @else
                 <div class="text-center">

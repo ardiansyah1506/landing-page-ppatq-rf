@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="row mt-4">
-        <div class="col-lg-6 bg-white p-5">
+        <div class="col-lg-6 p-5">
             <div class="text-center">
                 <img src="{{asset('img/KH.-Djaelani.png')}}" class="img-fluid mb-4" style="max-width: 200px;">
                 <h5 class="mb-3">SAMBUTAN KETUA DEWAN PEMBINA YAYASAN RAUDLATUL FALAH</h5>
@@ -32,7 +32,7 @@
                 </h5>
             </div>
         </div>
-        <div class="col-lg-6 bg-white p-5">
+        <div class="col-lg-6 p-5">
             <div class="text-center">
                 <img src="{{asset('img/abah-sohib.png')}}" class="img-fluid mb-4" style="max-width: 200px;">
                 <h5 class="mb-3">SAMBUTAN PENGASUH PONDOK PESANTREN

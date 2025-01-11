@@ -10,17 +10,20 @@
 
 @section('content')
     <div class="container-fluid py-5">
-        <a href="{{ url()->previous() }}" class="text-decoration-none text-white bg-green p-2 rounded">
+        <a href="{{ url()->previous() }}" class="text-green">
             <i class="bi bi-backspace-fill"></i> Kembali
         </a>
         <div class="row" id="kelas-container">
-            <h3 class="text-center text-green mb-4 text-uppercase">Wali Kelas</h3>
+            <div class="mb-2">
+                <h3 class="text-center text-green text-uppercase">Wali {{ $kelasData->nama_kelas }}</h3>
+                <p class="text-center">{{ $jumlahIsi }} santri</p>
+            </div>
             <!-- Data santri akan ditambahkan melalui JavaScript -->
             <div class="d-flex justify-content-center mb-4 align-items-center">
                 <div class="col-md-7 col-lg-3 wow fadeIn mb-4 d-flex flex-column align-items-center">
                     <div class="col-11 border border-success">
                     </div>
-                    <div class="card border-0 shadow-sm p-4 rounded">
+                    <div class="border-0 shadow-sm p-4 rounded">
                         <div class="d-flex justify-content-center align-items-center">
                             @if ($kelasData->wali_kelas_photo)
                                 <img class="w-50 img-thumbnail" 
@@ -44,16 +47,12 @@
         </div>
         <!-- Santri Container -->
         <div class="row d-flex justify-content-center align-items-center" id="santri-container">
-            <div class="text-center mb-4">
-                <h3 class="text-green ">Santri Kamar {{ $kelasData->nama_kelas }}</h3>
-                <p class="fst-italic">Jumlah Santri : {{ $jumlahIsi }}</p>
-            </div>
             @foreach ($query as $santri)
                 <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
-                    <div class="card border-0 shadow-sm p-2 rounded d-flex flex-row">
+                    <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
                         <div class="col-5 d-flex justify-content-center align-items-center p-2 rounded">
                             <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
-                                class="img-fluid rounded shadow-sm p-1" alt="foto profil {{ $santri->nama }}"
+                                class="img-fluid rounded p-1" alt="foto profil {{ $santri->nama }}"
                                 data-bs-toggle="modal"
                                 data-bs-target="#imageModal"
                                 data-src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}">

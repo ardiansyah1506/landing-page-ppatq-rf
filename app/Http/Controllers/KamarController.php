@@ -61,7 +61,9 @@ class KamarController extends Controller
         ->leftJoin('ref_kelas', 'santri_detail.kelas', '=', 'ref_kelas.code')
         ->leftJoin('employee_new', 'ref_kamar.employee_id', '=', 'employee_new.id')
         ->where('santri_kamar.kamar_id', $id)
+        ->where('santri_kamar.status', 1)
         ->where('santri_kamar.tahun_ajaran_id', $tahunAjaran->id)
+        ->distinct()
         ;
 
         $query = $queryKamar->get();
