@@ -8,7 +8,7 @@
     .iframe-container {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
+        height: auto;
         overflow: hidden;
     }
 
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col col-sm-9">
+                <div class="col-12 col-sm-9">
                     <div class="row d-flex justify-content-center gap-3">
                         <div class="col-1">
                             <a href="https://www.facebook.com/pprtq.r.falah" target="_blank" class="text-decoration-none fs-1"><i class="bi bi-facebook"></i></a>
@@ -170,7 +170,7 @@
                             <a href="https://www.instagram.com/ppatq_raudlatulfalah/" target="_blank" class="text-decoration-none fs-1 instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                         <div class="col-1">
-                            <a href="https://www.tiktok.com/@ppatq.raudlatulfalah?lang=en" target="_blank" class="text-decoration-none text-dark fs-1 tiktok"><i class="bi bi-tiktok"></i></a>
+                            <a href="https://www.tiktok.com/@ppatq.raudlatulfalah?lang=en" target="_blank" class="text-decoration-none text- fs-1 tiktok"><i class="bi bi-tiktok"></i></a>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
