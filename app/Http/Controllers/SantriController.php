@@ -27,10 +27,7 @@ class SantriController extends Controller
 
         $queryAlumni = DB::table('tb_alumni_santri_detail AS tbAlumni')
         ->select(
-            'tbAlumni.nama', 
-            'tbAlumni.photo', 
-            'tbAlumni.kelas', 
-            'tbAlumni.kecamatan', 
+            'tbAlumni.*',
             DB::raw("CONCAT(SUBSTRING(tbAlumni.no_hp, 1, 8), '****') AS no_hp"), 
             'ref_kamar.employee_id AS kamar_employee_id',
             'ref_kelas.employee_id AS kelas_employee_id',
@@ -103,10 +100,7 @@ class SantriController extends Controller
 
             $query = DB::table('tb_alumni_santri_detail AS tbAlumni')
             ->select(
-                'tbAlumni.nama', 
-                'tbAlumni.photo', 
-                'tbAlumni.kelas', 
-                'tbAlumni.kecamatan', 
+                'tbAlumni.*',
                 DB::raw("CONCAT(SUBSTRING(tbAlumni.no_hp, 1, 8), '****') AS no_hp"), 
                 'ref_kamar.employee_id AS kamar_employee_id',
                 'ref_kelas.employee_id AS kelas_employee_id',
