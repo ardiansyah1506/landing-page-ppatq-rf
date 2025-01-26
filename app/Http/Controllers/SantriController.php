@@ -76,7 +76,6 @@ class SantriController extends Controller
         ->leftJoin('employee_new AS wali_kelas', 'ref_kelas.employee_id', '=', 'wali_kelas.id')
         ->inRandomOrder();
 
-    
             if (!empty($search)) {
                 $query->where(function($subQuery) use ($search) {
                     $subQuery->where('santri_detail.nama', 'like', '%' . $search . '%')
@@ -133,9 +132,9 @@ class SantriController extends Controller
                              ->orWhere('tbAlumni.no_hp', 'like', '%' . $search . '%');
                 });
             }
-    
-            // Mendapatkan hasil dengan pagination (10 item per halaman)
+
             $data = $query->paginate(12);
+    
             // Kembalikan data dalam format JSON
             return response()->json($data);
     

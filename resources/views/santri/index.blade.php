@@ -62,32 +62,40 @@
                 <div class="row d-flex justify-content-center" id="santri-container">
                     <!-- Data santri akan ditambahkan melalui JavaScript -->
                     @foreach ($data as $santri)
-                        <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4 position-relative">
-                            <div class="p-2 border-0 shadow-sm rounded d-flex flex-column align-items-center">
-                                <div class="col-11 border border-success mt-1">
+                        <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
+                            <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                <div class="col-5 d-flex justify-content-center align-items-center">
+                                    <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
+                                        class="rounded img-fluid p-2"
+                                        alt="foto profil {{ $santri->nama }}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#imageModal"
+                                        style="height: 200px; width: 150px; ">
                                 </div>
-                                <div class="p-3">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
-                                            class="w-50 img-thumbnail" alt="foto profil {{ $santri->nama }}">
+                                <div class="p-1 d-flex flex-column gap-3 col py-2">
+                                    <div class="col-11 border border-success">
                                     </div>
-                                    <div class="p-1 d-flex flex-column gap-5">
-                                        <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama ?? '-'}}</h5>
-                                        <table class="table" style="font-size: 14px">
-                                            <tr>
-                                                <th scope="row"><i class="bi bi-house-door-fill"></i> Kelas :</th>
-                                                <td class="text-uppercase">{{ $santri->kelas ?? " - "}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" style="width: 126px"><i class="bi bi-file-person-fill"></i> Murroby :</th>
-                                                <td class="text-uppercase">{{ $santri->guru_murroby ?? " - "}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Wali Kelas :</th>
-                                                <td class="text-uppercase">{{ $santri->wali_kelas ?? " - "}}</td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                                    <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama }}</h5>
+                                    <ul class="list-unstyled w-100">
+                                        <div class="col">
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1 text-uppercase">
+                                                    Kelas : {{ $santri->kelas ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Murroby : {{ $santri->guru_murroby ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm">
+                                                    Wali Kelas : {{ $santri->wali_kelas ?? '-' }}
+                                                </p>
+                                            </div>
+                                        </div>
+        
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -122,59 +130,92 @@
                     <!-- Alumni Container -->
                     <div class="row d-flex justify-content-center" id="alumni-container">
                         <!-- Data alumni akan ditambahkan melalui JavaScript -->
-                        @foreach ($alumni as $row)
-                            <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4 position-relative">
-                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-column align-items-center">
-                                    <div class="col-11 border border-success mt-1">
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $row->photo }}"
-                                                class="w-50 img-thumbnail" alt="foto profil {{ $row->nama }}">
+                        @foreach ($alumni as $index => $row)
+                        @if ($index >= 4)
+                            @break
+                        @endif
+                        <div class="col-md-6 col-12 wow fadeIn mb-4">
+                            <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                <div class="col-5 d-flex justify-content-center align-items-center">
+                                    <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $row->photo }}"
+                                        class="rounded img-fluid p-2"
+                                        alt="foto profil {{ $row->nama }}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#imageModal"
+                                        style="height: 200px; width: 150px;">
+                                </div>
+                                <div class="p-1 d-flex flex-column gap-3 col py-2">
+                                    <div class="col-11 border border-success"></div>
+                                    <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $row->nama }}</h5>
+                                    <ul class="list-unstyled w-100">
+                                        <div class="col">
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tahun Angkatan : {{ $row->angkatan ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tahun Lulus : {{ $row->tahun_lulus ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tingkat Masuk MI : {{ $row->tahun_msk_mi ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Nama Pondok MI : {{ $row->nama_pondok_mi ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tahun Masuk Pondok MI : {{ $row->tahun_msk_pondok_mi ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tahun Masuk Sekolah Menengah Pertama : {{ $row->thn_msk_menengah ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Nama Sekolah Menengah Pertama : {{ $row->nama_sekolah_menengah_pertama ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Nama Pondok Menengah Pertama : {{ $row->nama_pondok_menengah_pertama ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Tahun Masuk Menengah Atas : {{ $row->tahun_msk_menengah_atas ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Nama Sekolah Menengah Atas : {{ $row->nama_menengah_atas ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Nama Pondok Menengah Atas : {{ $row->nama_pondok_menengah_atas ?? '-' }}
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm">
+                                                    No HP : {{ $row->no_hp ?? '-' }}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="p-1 d-flex flex-column gap-5">
-                                            <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $row->nama ?? '-'}}</h5>
-                                            <table class="table" style="font-size: 14px">
-                                                <tr>
-                                                    <th scope="row"><i class="bi bi-house-door-fill"></i> Tahun Angkatan :</th>
-                                                    <td class="text-uppercase">{{ $row->angkatan ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-file-person-fill"></i> Tahun Lulus :</th>
-                                                    <td class="text-uppercase">{{ $row->thnLulus ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Menengah :</th>
-                                                    <td class="text-uppercase">{{ $row->tgktMenengah ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Atas :</th>
-                                                    <td class="text-uppercase">{{ $row->tgktAtas ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Tinggi :</th>
-                                                    <td class="text-uppercase">{{ $row->tgktTinggi ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Berkarir di :</th>
-                                                    <td class="text-uppercase">{{ $row->bkrjaDi ?? " - "}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-phone"></i> No. HP :</th>
-                                                    <td class="text-uppercase">{{ $row->no_hp ?? " - "}}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
+                                    </ul>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-            
-                    <!-- Pagination -->
-                    <div class="d-flex justify-content-center pagination-container-alumni mt-5">
-                        <!-- Pagination -->
-                        {{ $alumni->links() }}
+                        </div>
+                    @endforeach
+
                     </div>
             </div>
         </div>
@@ -207,35 +248,43 @@
                         // Iterasi setiap santri dan tambahkan ke tabel
                         $.each(data.data, function(index, santri) {
                             $('#santri-container').append(`
-                            <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4 position-relative">
-                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-column align-items-center">
-                                    <div class="col-11 border border-success mt-1">
-                                    </div>
-                                    <div class="p-4">
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${santri.photo }"
-                                                class="w-50 img-thumbnail" alt="foto profil ${santri.nama }">
-                                        </div>
-                                        <div class="p-1 d-flex flex-column gap-5">
-                                            <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama ?? '-'}</h5>
-                                            <table class="table" style="font-size: 14px">
-                                                <tr>
-                                                    <th scope="row">Kelas :</th>
-                                                    <td class="text-uppercase">${ santri.kelas ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px">Murroby :</th>
-                                                    <td class="text-uppercase">${ santri.guru_murroby ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px">Wali Kelas :</th>
-                                                    <td class="text-uppercase">${ santri.wali_kelas ?? " - "}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
+                            <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
+                            <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                <div class="col-5 d-flex justify-content-center align-items-center">
+                                    <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ santri.photo }"
+                                        class="rounded img-fluid p-2"
+                                        alt="foto profil ${ santri.nama }"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#imageModal"
+                                        style="height: 200px; width: 150px; ">
                                 </div>
-                            </div>    
+                                <div class="p-1 d-flex flex-column gap-3 col py-2">
+                                    <div class="col-11 border border-success">
+                                    </div>
+                                    <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama }</h5>
+                                    <ul class="list-unstyled w-100">
+                                        <div class="col">
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1 text-uppercase">
+                                                    Kelas : ${ santri.kelas ?? '-' }
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm mb-1">
+                                                    Murroby : ${ santri.guru_murroby ?? '-' }
+                                                </p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="lh-1 text-sm">
+                                                    Wali Kelas : ${ santri.wali_kelas ?? '-' }
+                                                </p>
+                                            </div>
+                                        </div>
+        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>    
                             `);
                         });
                         // Menambahkan pagination
@@ -259,51 +308,86 @@
                         $('#alumni-container').empty();
                         $.each(data.data, function(index, alumni) {
                             $('#alumni-container').append(`
-                            <div class="col-md-7 col-10 col-lg-3 wow fadeIn mb-4 position-relative">
-                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-column align-items-center">
-                                    <div class="col-11 border border-success mt-1">
+                            <div class="col-md-6 col-12 wow fadeIn mb-4">
+                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                    <div class="col-5 d-flex justify-content-center align-items-center">
+                                        <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ alumni.photo }"
+                                            class="rounded img-fluid p-2"
+                                            alt="foto profil ${ alumni.nama }"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#imageModal"
+                                            style="height: 200px; width: 150px;">
                                     </div>
-                                    <div class="p-4">
-                                        <div class="d-flex justify-content-center align-items-center">
-                                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${alumni.photo }"
-                                                class="w-50 img-thumbnail" alt="foto profil ${alumni.nama }">
-                                        </div>
-                                        <div class="p-1 d-flex flex-column gap-5">
-                                            <h5 class="fs-6 mb-0 text-center text-uppercase">${ alumni.nama ?? '-'}</h5>
-                                            <table class="table" style="font-size: 14px">
-                                                <tr>
-                                                    <th scope="row"><i class="bi bi-house-door-fill"></i> Tahun Angkatan :</th>
-                                                    <td class="text-uppercase">${ alumni.angkatan ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-file-person-fill"></i> Tahun Lulus :</th>
-                                                    <td class="text-uppercase">${ alumni.thnLulus ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Menengah :</th>
-                                                    <td class="text-uppercase">${ alumni.tgktMenengah ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Atas :</th>
-                                                    <td class="text-uppercase">${ alumni.tgktAtas ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Tingkat Tinggi :</th>
-                                                    <td class="text-uppercase">${ alumni.tgktTinggi ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-person-workspace"></i> Berkarir di :</th>
-                                                    <td class="text-uppercase">${ alumni.bkrjaDi ?? " - "}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row" style="width: 126px"><i class="bi bi-phone"></i> No. HP :</th>
-                                                    <td class="text-uppercase">${ alumni.no_hp ?? " - "}</td>
-                                                </tr>
-                                            </table>
-                                        </div>
+                                    <div class="p-1 d-flex flex-column gap-3 col py-2">
+                                        <div class="col-11 border border-success"></div>
+                                        <h5 class="fs-6 mb-0 text-center text-uppercase">${ alumni.nama }}</h5>
+                                        <ul class="list-unstyled w-100">
+                                            <div class="col">
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tahun Angkatan : ${ alumni.angkatan ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tahun Lulus : ${ alumni.tahun_lulus ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tingkat Masuk MI : ${ alumni.tahun_msk_mi ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Nama Pondok MI : ${ alumni.nama_pondok_mi ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tahun Masuk Pondok MI : ${ alumni.tahun_msk_pondok_mi ?? '-' }}
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tahun Masuk Sekolah Menengah Pertama : ${ alumni.thn_msk_menengah ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Nama Sekolah Menengah Pertama : ${ alumni.nama_sekolah_menengah_pertama ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Nama Pondok Menengah Pertama : ${ alumni.nama_pondok_menengah_pertama ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Tahun Masuk Menengah Atas : ${ alumni.tahun_msk_menengah_atas ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Nama Sekolah Menengah Atas : ${ alumni.nama_menengah_atas ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm mb-1">
+                                                        Nama Pondok Menengah Atas : ${ alumni.nama_pondok_menengah_atas ?? '-' }
+                                                    </p>
+                                                </div>
+                                                <div class="col">
+                                                    <p class="lh-1 text-sm">
+                                                        No HP : ${ alumni.no_hp ?? '-' }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>    
+                            </div>  
                             `);
                         });
                         // Menambahkan pagination

@@ -49,5 +49,4 @@ class BeritaController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-    
 }

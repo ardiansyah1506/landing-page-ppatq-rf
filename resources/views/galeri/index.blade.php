@@ -4,22 +4,6 @@
 @endsection
 @section('header')
 <style>
-    .portfolio-menu{
-        text-align:center;
-    }
-    .portfolio-menu ul li{
-        display:inline-block;
-        margin:0;
-        list-style:none;
-        padding:10px 15px;
-        cursor:pointer;
-        -webkit-transition:all 05s ease;
-        -moz-transition:all 05s ease;
-        -ms-transition:all 05s ease;
-        -o-transition:all 05s ease;
-    transition:all .5s ease;
-    }
-
     .portfolio-item{
         width:100%;
     }
@@ -74,17 +58,6 @@
             setTimeout(function() {
                 test();
             }, 100);
-
-            $('.portfolio-menu ul li').click(function(){
-                $('.portfolio-menu ul li').removeClass('active');
-                $(this).addClass('active');
-                
-                var selector = $(this).attr('data-filter');
-                $('.portfolio-item').isotope({
-                        filter:selector
-                });
-                return false;
-            });
 
             var popup_btn = $('.popup-btn');
                 popup_btn.magnificPopup({

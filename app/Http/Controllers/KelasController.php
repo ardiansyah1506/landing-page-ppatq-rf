@@ -54,8 +54,7 @@ class KelasController extends Controller
             ->leftJoin('ref_tahfidz', 'santri_detail.tahfidz_id', '=', 'ref_tahfidz.id')
             ->leftJoin('santri_tahfidz', 'santri_detail.id', '=', 'santri_tahfidz.santri_id')
             ->leftJoin('employee_new', 'ref_kamar.employee_id', '=', 'employee_new.id')
-            ->where('ref_kelas.id', '=', $id)
-            ->where('santri_tahfidz.tahun_ajaran_id', '=', $tahunAjaran->id);
+            ->where('ref_kelas.id', '=', $id);
 
             $jumlahIsi = $querySantriDetail->count();
             $query = $querySantriDetail->get();

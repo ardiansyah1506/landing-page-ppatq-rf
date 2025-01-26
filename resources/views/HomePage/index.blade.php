@@ -199,7 +199,26 @@
                             <span><i class="bi bi-person-standing-dress"></i> Santri Putri : {{ $jumlahSiswaPerempuan }}</span>
                         </div>
                     </div>
+                    <div class="col mt-5 mt-sm-0 px-2">
+                        <div class="col-12 py-2 bg-green rounded-bottom"></div>
+                        <div class="col px-3 py-3 shadow-sm rounded-bottom d-flex flex-column">
+                            <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+                                <!-- Histats.com  START  (aync)-->
+                                <script type="text/javascript">var _Hasync= _Hasync|| [];
+                                _Hasync.push(['Histats.start', '1,4895326,4,401,118,80,00011011']);
+                                _Hasync.push(['Histats.fasi', '1']);
+                                _Hasync.push(['Histats.track_hits', '']);
+                                (function() {
+                                var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+                                hs.src = ('//s10.histats.com/js15_as.js');
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                                })();</script>
+                                <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4895326&101" alt="" border="0"></a></noscript>
+                                <!-- Histats.com  END  -->
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="row mt-5">
                     <!-- Fasilitas Section -->
                     <div class="row">
@@ -233,6 +252,7 @@
                         @endforelse
                     </div>
                 </div>
+
                 <div class="row mt-5">
                     <div class="row">
                         <div class="col-12 col-sm-9 px-4">
