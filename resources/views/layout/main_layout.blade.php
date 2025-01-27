@@ -48,7 +48,10 @@
                     <a class="nav-link" href="{{Route('visimisi')}}"><i class="bi bi-compass"></i>Visi dan Misi</a>
                 </li>
                 <li class="nav-item" id="santri">
-                    <a class="nav-link" href="{{Route('santri')}}"><i class="bi bi-person"></i>Santri/Alumni</a>
+                    <a class="nav-link" href="{{Route('santri')}}"><i class="bi bi-person"></i>Santri</a>
+                </li>
+                <li class="nav-item" id="alumni">
+                    <a class="nav-link" href="{{Route('alumni')}}"><i class="bi bi-person-badge"></i>Alumni</a>
                 </li>
                 <li class="nav-item" id="galeri">
                     <a class="nav-link" href="{{ Route('galeri') }}"><i class="bi bi-image"></i>Galeri</a>

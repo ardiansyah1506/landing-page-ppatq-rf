@@ -39,6 +39,7 @@ class KelasController extends Controller
 
             $querySantriDetail = DB::table('santri_detail')
             ->select(
+                'santri_detail.no_induk',
                 'santri_detail.nama', 
                 'santri_detail.photo', 
                 'santri_detail.kelas', 
@@ -54,7 +55,8 @@ class KelasController extends Controller
             ->leftJoin('ref_tahfidz', 'santri_detail.tahfidz_id', '=', 'ref_tahfidz.id')
             ->leftJoin('santri_tahfidz', 'santri_detail.id', '=', 'santri_tahfidz.santri_id')
             ->leftJoin('employee_new', 'ref_kamar.employee_id', '=', 'employee_new.id')
-            ->where('ref_kelas.id', '=', $id);
+            ->where('ref_kelas.id', '=', $id)
+            ->distinct();
 
             $jumlahIsi = $querySantriDetail->count();
             $query = $querySantriDetail->get();
