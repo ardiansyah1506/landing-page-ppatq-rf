@@ -2,7 +2,7 @@
 
 @extends('layout.main_layout')
 @section('title')
-    <title>Kamar {{ $kelasData->nama_kelas }} | PPATQ-RF</title>
+    <title>{{ $kelasData->nama_kelas }} | PPATQ-RF</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -51,11 +51,11 @@
                 <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
                     <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
                         <div class="col-5 d-flex justify-content-center align-items-center p-2 rounded">
-                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
+                            <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->fotoSantri }}"
                                 class="img-fluid rounded p-1" alt="foto profil {{ $santri->nama }}"
                                 data-bs-toggle="modal"
                                 data-bs-target="#imageModal"
-                                data-src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}">
+                                data-src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->fotoSantri }}">
                         </div>
                         <div class="d-flex flex-column gap-3 col py-2">
                             <div class="col-11 border border-success">

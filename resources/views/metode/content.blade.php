@@ -1,5 +1,5 @@
     <!-- Service Start -->
-    <div class="container-fluid py-4 wow fadeInUp border-top" data-wow-delay="0.1s">
+    <div class="container-fluid py-4 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h2 class="fw-bold text-green text-uppercase">Metode</h5>

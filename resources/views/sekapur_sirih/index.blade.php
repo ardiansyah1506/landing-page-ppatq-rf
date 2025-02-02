@@ -14,7 +14,7 @@
                 <h4 class="mb-4">
                     السلام عليكم ورحمة الله وبركاته
 
- الحمد لله رب العالمين والصلاة والسلام علي اشرف الانبياء والمر سلين وعلي اله وصحبه اجمعين . اما بعد
+                            الحمد لله رب العالمين والصلاة والسلام علي اشرف الانبياء والمر سلين وعلي اله وصحبه اجمعين . اما بعد
                 </h4>
                 <p class="text-start">
                     Seorang seniman terkenal mengatakan bahwa anak adalah harta yang berharga, begitu juga dalam puisi Khalil Gibran, anak merupakan putra putri yang hidup yang rindu pada diri sendiri, yang jiwanya adalah penghuni rumah masa depan, yang kehidupannya terus berlangsung tiada henti.

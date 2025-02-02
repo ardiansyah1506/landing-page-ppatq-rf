@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class KamarController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $tahunAjaran = DB::table('ref_tahun_ajaran')->latest()->first();
 
         $data = DB::table('ref_kamar')
@@ -28,7 +29,8 @@ class KamarController extends Controller
         return view('kamar.index', ['data' => $data]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
 
         $tahunAjaran = DB::table('ref_tahun_ajaran')->latest()->first();
 

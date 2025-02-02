@@ -44,6 +44,17 @@
         height: 100%; /* Sesuaikan tinggi iframe dengan container */
         border-radius: 8px; /* Tambahkan border radius */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan efek bayangan */
+    
+    }
+
+    .blink {
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%   { opacity: 1; }
+        50%  { opacity: 0; }
+        100% { opacity: 1; }
     }
 
 </style>
@@ -61,7 +72,7 @@
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container w-100">
         <div class="row text-center">
-            <h6 class="py-2 bg-green rounded text-white">Dapatkan informasi lengkap mengenai Penerimaan Santri Baru (PSB) <a class="fst-italic" target="_blank" href="https://psb.ppatq-rf.id/">Di sini!!!.</a></h6>
+            <h6 class="py-2 bg-green rounded text-white">Dapatkan informasi lengkap mengenai Penerimaan Santri Baru (PSB) <a class="fst-italic fs-2 blink" target="_blank" href="https://psb.ppatq-rf.id/">Disini!!!.</a></h6>
         </div>
         <div class="row mb-3">
             <div class="col-12 col-sm-9">
@@ -123,9 +134,9 @@
                             <h4 class="fw-bold text-green text-uppercase text-green py-2">Agenda</h4>
                         </div>
                     </div>
-                    {{-- <div class="col">
-                        <a href="#" class="fst-italic text-gray text-all-news">|  Semua Agenda</a>
-                    </div> --}}
+                    <div class="col">
+                        <a href="{{ route("agenda") }}" class="fst-italic text-gray text-all-news">|  Semua Agenda</a>
+                    </div>
                 </div>
                 
                 <div class="col mt-2 px-2">

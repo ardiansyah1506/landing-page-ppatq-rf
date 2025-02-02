@@ -13,19 +13,27 @@ Route::get('/about', $controller_path .'\HomePageController@About')->name('about
 Route::get('/visi-misi', $controller_path .'\HomePageController@visimisi')->name('visimisi');
 Route::get('/sekapur-sirih', $controller_path .'\HomePageController@sekapursirih')->name('sekapursirih');
 
-Route::get('/santri', $controller_path .'\SantriController@index')->name('santri');
-Route::post('/get_santri', $controller_path .'\SantriController@get_santri')->name('get_santri');
+Route::get('/prestasi', $controller_path .'\PrestasiController@index')->name('prestasi');
 
-Route::get('/alumni', $controller_path .'\AlumniController@index')->name('alumni');
-Route::post('/get_alumni', $controller_path .'\AlumniController@get_alumni')->name('get_alumni');
+Route::get('/kesantrian', $controller_path .'\KesantrianController@index')->name('kesantrian');
+Route::post('/get_santri', $controller_path .'\KesantrianController@get_santri')->name('get_santri');
+Route::post('/get_alumni', $controller_path .'\KesantrianController@get_alumni')->name('get_alumni');
+Route::post('/get_calon_santri', $controller_path .'\KesantrianController@get_calon_santri')->name('get_calon_santri');
 
-Route::get('/galeri', $controller_path .'\GaleriController@index')->name('galeri');
+Route::get('/galeri-fasilitas', $controller_path .'\GaleriFasilitasController@index')->name('galeri-fasilitas');
 
 Route::get('/berita', $controller_path .'\BeritaController@index')->name('berita');
+
+Route::get('/agenda', $controller_path .'\AgendaController@index')->name('agenda');
 Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')->name('berita.detail');
 
-Route::get('/kelas', $controller_path .'\KelasController@index')->name('kelas');
-Route::get('/kelas/{id}', $controller_path .'\KelasController@detail')->name('kelas.detail');
+Route::get('/kelas-kamar', $controller_path .'\KelasKamarController@index')->name('kelas-kamar');
+Route::get('/kelas/{id}', $controller_path .'\KelasKamarController@showKelas')->name('show-kelas');
+Route::get('/kamar/{id}', $controller_path .'\KelasKamarController@showKamar')->name('show-kamar');
 
-Route::get('/kamar', $controller_path .'\KamarController@index')->name('kamar');
-Route::get('/kamar/{id}', $controller_path .'\KamarController@show')->name('kamar.detail');
+Route::get('/pengasuh-staff', $controller_path .'\PengasuhStaffController@index')->name('pengasuh-staff');
+Route::post('/get_ustad', $controller_path .'\PengasuhStaffController@get_ustad')->name('get_ustad');
+Route::post('/get_murroby', $controller_path .'\PengasuhStaffController@get_murroby')->name('get_murroby');
+Route::post('/get_staff', $controller_path .'\PengasuhStaffController@get_staff')->name('get_staff');
+
+Route::get('/layanan', $controller_path .'\LayananController@index')->name('layanan');
