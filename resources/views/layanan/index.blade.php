@@ -90,7 +90,7 @@
                                             <div class="text-block">
                                                 <div class="name">Sosial Media</div>
                                                 <div class="text">Sosial Media adalah sarana informasi dan komunikasi resmi pondok pesantren yang digunakan untuk menyebarkan berita, kegiatan, dan perkembangan pesantren kepada santri, wali santri, serta masyarakat luas. Melalui platform seperti Facebook, Instagram, dan WhatsApp, pondok pesantren dapat berbagi konten inspiratif, jadwal kegiatan, serta pengumuman penting. Dengan adanya sosial media, diharapkan tercipta keterhubungan yang lebih erat antara pesantren dan komunitasnya, serta memudahkan akses informasi secara cepat dan akurat.</div>
-                                                <div class="text fs-3">
+                                                <div class="text fs-3 mt-2">
                                                     <span>
                                                         <a href="https://www.tiktok.com/@ppatq.raudlatulfalah?lang=en" class="text-decoration-none">
                                                             <i class="bi bi-tiktok"></i>
