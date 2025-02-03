@@ -30,8 +30,8 @@
             <!-- Ustad -->
             <div class="row">
                 <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
-                        <h2 class="fw-bold text-green text-uppercase text-green">Ustad</h2>
-                        <small class="mb-0">Daftar Ustad PPATQ RAUDLATUL FALAH</small>
+                        <h2 class="fw-bold text-green text-uppercase text-green">Ustad/Ustadzah</h2>
+                        <small class="mb-0">Daftar Ustad/Ustadzah PPATQ RAUDLATUL FALAH</small>
                 </div>
             </div>
             <!-- Search Input Ustad -->

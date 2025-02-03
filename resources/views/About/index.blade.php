@@ -123,7 +123,7 @@
                 Nara hubung : Ust Muslim, AH
             </p>
         </div>
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-6 col-12 d-flex align-items-center justify-content-center">
             <div class="position-relative h-100" style="overflow: hidden;">
                 <iframe loading="lazy" title="Lokasi Pondok Pesantren Anak Tafidzul Quran Raudlatul Falah" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.3901543170664!2d110.94519457295992!3d-6.7221556932737885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70d0d8f54eaf87%3A0x2e013b91de6e90fe!2sPondok%20Pesantren%20PPRTQ%20Raudhatul%20Falah%20Bermi!5e0!3m2!1sen!2sid!4v1738514991001!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
