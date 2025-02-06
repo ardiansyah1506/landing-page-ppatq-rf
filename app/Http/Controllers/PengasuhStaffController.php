@@ -34,7 +34,7 @@ class PengasuhStaffController extends Controller
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-            $data = $query->paginate(4);
+            $data = $query->get();
             // Kembalikan data dalam format JSON
             return response()->json($data);
     
@@ -65,7 +65,7 @@ class PengasuhStaffController extends Controller
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-            $data = $query->paginate(4);
+            $data = $query->get();
             // Kembalikan data dalam format JSON
             return response()->json($data);
     
@@ -82,8 +82,7 @@ class PengasuhStaffController extends Controller
 
             // Mengambil data dari tabel 'santri_detail' dengan pagination
             $query = DB::table("employee_new")
-            ->select("nama", "alhafidz", "photo", "jenis_kelamin", "structural_positions.name AS jabatan")
-            ->leftJoin("structural_positions", "structural_positions.id", "employee_new.jabatan_new")
+            ->select("nama", "alhafidz", "photo", "jenis_kelamin")
             ->whereIn("employee_new.jabatan_new", [9, 10, 11, 13, 15])
             ->inRandomOrder();
 
@@ -96,7 +95,7 @@ class PengasuhStaffController extends Controller
             }
     
             // Mendapatkan hasil dengan pagination (10 item per halaman)
-            $data = $query->paginate(4);
+            $data = $query->get();
             // Kembalikan data dalam format JSON
             return response()->json($data);
     

@@ -151,12 +151,6 @@
                     </div>
                 @endforeach
             </div>
-
-            <!-- Pagination Santri Aktif-->
-            <div class="d-flex justify-content-center pagination-container mt-5">
-                <!-- Pagination -->
-                {{ $santriAktif->links() }}
-            </div>
         </div>
 
         <div class="mt-5 px-2">
@@ -266,6 +260,11 @@
                         </div>
                     </div>
                 @endforeach
+                <!-- Pagination Santri Alumni-->
+                <div class="d-flex justify-content-center pagination-container mt-5">
+                    <!-- Pagination -->
+                    {{ $santriAlumni->links() }}
+                </div>
             </div>
         </div>
     </div>

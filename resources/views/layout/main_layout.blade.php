@@ -36,34 +36,34 @@
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item" id="home">
-                    <a class="nav-link" href="{{Route('HomePage')}}" name="homePage"><i class="bi bi-house-door"></i>Home</a>
+                    <a class="nav-link" href="{{Route('HomePage')}}" name="homePage">Home</a>
                 </li>
                 <li class="nav-item" id="about">
-                    <a class="nav-link" href="{{Route('aboutPage')}}" name="aboutPage"><i class="bi bi-building"></i>Seputar PPATQ</a>
-                </li>
-                <li class="nav-item" id="galeri-fasilitas">
-                    <a class="nav-link" href="{{ Route('galeri-fasilitas') }}"><i class="bi bi-image"></i>Galeri & Fasilitas</a>
-                </li>
-                <li class="nav-item" id="prestasi">
-                    <a class="nav-link" href="{{Route('prestasi')}}"><i class="bi bi-disc"></i>Prestasi</a>
-                </li>
-                <li class="nav-item" id="kesantrian">
-                    <a class="nav-link" href="{{Route('kesantrian')}}"><i class="bi bi-people"></i>Kesantrian</a>
-                </li>
-                <li class="nav-item" id="agenda">
-                    <a class="nav-link" href="{{Route('agenda')}}"><i class="bi bi-calendar"></i>Agenda</a>
+                    <a class="nav-link" href="{{Route('aboutPage')}}" name="aboutPage">Seputar PPATQ</a>
                 </li>
                 <li class="nav-item" id="berita">
-                    <a class="nav-link" href="{{Route('berita')}}"><i class="bi bi-newspaper"></i>Berita</a>
+                    <a class="nav-link" href="{{Route('berita')}}">Berita</a>
                 </li>
-                <li class="nav-item" id="kelas-kamar">
-                    <a class="nav-link" href="{{Route('kelas-kamar')}}"><i class="bi bi-segmented-nav"></i>Kelas & Kamar</a>
+                <li class="nav-item" id="agenda">
+                    <a class="nav-link" href="{{Route('agenda')}}">Agenda</a>
+                </li>
+                <li class="nav-item" id="galeri-fasilitas">
+                    <a class="nav-link" href="{{ Route('galeri-fasilitas') }}">Galeri & Fasilitas</a>
                 </li>
                 <li class="nav-item" id="pengasuh-staff">
-                    <a class="nav-link" href="{{Route('pengasuh-staff')}}"><i class="bi bi-person-badge"></i>Staff & Pengasuh</a>
+                    <a class="nav-link" href="{{Route('pengasuh-staff')}}">Staff & Pengasuh</a>
+                </li>
+                <li class="nav-item" id="kesantrian">
+                    <a class="nav-link" href="{{Route('kesantrian')}}">Kesantrian</a>
+                </li>
+                <li class="nav-item" id="prestasi">
+                    <a class="nav-link" href="{{Route('prestasi')}}">Prestasi</a>
+                </li>
+                <li class="nav-item" id="kelas-kamar">
+                    <a class="nav-link" href="{{Route('kelas-kamar')}}">Kelas & Kamar</a>
                 </li>
                 <li class="nav-item" id="layanan">
-                    <a class="nav-link" href="{{Route('layanan')}}"><i class="bi bi-person-gear"></i>Layanan</a>
+                    <a class="nav-link" href="{{Route('layanan')}}">Layanan</a>
                 </li>
             </ul>
         </div>
