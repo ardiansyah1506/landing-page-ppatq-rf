@@ -9,14 +9,7 @@
                         PPATQ RAUDLATUL FALAH - PATI
                     </small>
                 </div>
-
-                <p class="mb-2">
-                    Pesantren PPATQ Raudlatul Falah berdiri di atas lahan yang luas dan asri, berlokasi di Pati, Jawa Tengah. Dikenal sebagai lembaga pendidikan Islam yang berfokus pada pembentukan generasi penghafal Al-Qur'an, pesantren ini telah memberikan kontribusi signifikan dalam pembangunan sumber daya manusia di bidang keagamaan serta pengembangan ilmu pengetahuan, dengan tetap berpegang teguh kepada Al-Qur'an dan as-Sunnah sebagai pedoman utama.
-                </p>
-                <p class="mb-2">
-                    Jenjang pendidikan Pesantren PPATQ Raudlatul Falah mulai dari tingkat dasar hingga menengah, dengan fokus utama pada program tahfidzul Qur'an. Kurikulum yang digunakan merupakan perpaduan antara Kurikulum Pendidikan Nasional dan Kurikulum Kepesantrenan.
-                </p>
-                    
+                {!! $about->tentang !!}
             </div>
             <div class="col-lg-6 col-12" style="min-height: 200px;">
                 <div class="position-relative h-100" style="overflow: hidden;">

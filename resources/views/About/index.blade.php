@@ -20,7 +20,7 @@
         </div>
         <div class="col-12 col-sm-6 mt-4 d-flex flex-column justify-content-center">
             <h4 class="fw-bold text-green text-uppercase text-green text-center fs-3 mb-4 mt-4">Visi</h4>
-            <p>"Bersama QU", Komitmen untuk membangun sebuah komunitas yang dijiwai oleh nilai-nilai keimanan dan keislaman yang kokoh. Visi ini mencerminkan tekad untuk bersama-sama menjalani kehidupan dengan bertaqwa kepada Allah, menjunjung tinggi nilai-nilai kesantunan dalam berinteraksi, berjuang untuk kemajuan yang berkelanjutan, dan menghidupkan Al-Qur'an sebagai pedoman utama dalam segala aspek kehidupan.</p>
+            {!! $about->visi !!}
         </div>
     </div>
     <div class="row py-5">
@@ -29,7 +29,7 @@
         </div>
         <div class="col-12 col-sm-6 order-sm-1 order-2 d-flex flex-column justify-content-center">
             <h4 class="fw-bold text-green text-uppercase text-green text-center fs-3 mb-4 mt-4">Misi</h4>
-            <p>"Misi kami adalah menghasilkan generasi yang hafal Al-Qur'an dengan mutu yang unggul, bukan hanya sekedar dalam hafalan, tetapi juga dalam pemahaman dan aplikasi nilai-nilai Al-Qur'an dalam kehidupan sehari-hari. Kami berkomitmen untuk mencetak generasi yang tidak hanya cemerlang dalam akademik, tetapi juga memiliki karakter yang terkait erat dengan ajaran Al-Qur'an. Kami bertekad untuk meningkatkan mutu imtaq (keimanan) dan iptek (ilmu pengetahuan dan teknologi) dalam pendidikan, serta menegakkan ahlakul karimah sebagai landasan moral dan etika dalam bermasyarakat."</p>
+            {!! $about->misi !!}
         </div>
     </div>
 </div>
@@ -108,19 +108,19 @@
             </div>
 
             <p class="mb-2">
-                Alamat : Jl. KH. Abdullah Km. 02, Kec. Gembong, Kabupaten Pati, Jawa Tengah 59162
+                Alamat : {{ $about->alamat }}
             </p>
             <p class="mb-2">
-                Sekolah : MI Tahfidzul Qur’an Raudlatul Falah
+                Sekolah : {{ $about->sekolah }}
             </p>
             <p class="mb-2">
-                NSM : 111233180196
+                NSM : {{ $about->nsm }}
             </p>
             <p class="mb-2">
-                NPSN : 69727500
+                NPSN : {{ $about->npsn }}
             </p>
             <p class="mb-2">
-                Nara hubung : Ust Muslim, AH
+                Nara hubung : {{ $about->nara_hubung }}
             </p>
         </div>
         <div class="col-lg-6 col-12 d-flex align-items-center justify-content-center">

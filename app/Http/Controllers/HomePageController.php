@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 class HomePageController extends Controller
 {
     
-    public function index(){
+    public function index()
+    {
         try {
                 $data['beritas'] = DB::table('berita')
                 ->select('berita.id','berita.kategori_id', 'berita.judul', 'berita.slug','berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'berita.user_id', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
@@ -110,7 +111,11 @@ class HomePageController extends Controller
     }
     
     public function About(){
-        return view('About.index');
+        $data['about'] = DB::table('about')
+        ->select('about.*')
+        ->first();
+
+        return view('About.index', $data);
     }
     public function visimisi(){
         return view('visimisi.index');
