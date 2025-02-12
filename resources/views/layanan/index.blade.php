@@ -4,10 +4,6 @@
 @endsection
 @section('header')
 <style>
-    #services {}
-    #services .services-top {
-        padding: 70px 0 50px;
-    }
     #services .services-list {
         padding-top: 50px;
     }
@@ -49,7 +45,7 @@
             <div class="services-top">
                 <div class="container bootstrap snippets bootdey">
                     <div class="row text-center">
-                        <div class="section-title text-center position-relative pb-3 mb-4 mx-auto" style="max-width: 600px;">
+                        <div class="section-title text-center position-relative py-4 mb-4 mx-auto" style="max-width: 600px;">
                             <h2 class="fw-bold text-green text-uppercase text-green">Layanan PPATQ</h2>
                         </div>
                     </div>
