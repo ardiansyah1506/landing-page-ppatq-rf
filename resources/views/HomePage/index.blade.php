@@ -93,10 +93,14 @@
                             <div class="blog-item bg-light rounded overflow-hidden">
                                 <div class="blog-img position-relative overflow-hidden">
                                     <div class="overflow-hidden">
-                                        @php
-                                        $url = $berita->thumbnail;
-                                        $headers = get_headers($url);
-                                        $exists = strpos($headers[0], '200');
+                                    @php
+                                    $url = $berita->thumbnail ?? null;
+                                    if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                                        $headers = @get_headers($url);
+                                        $exists = $headers && strpos($headers[0], '200') !== false;
+                                    } else {
+                                        $exists = false;
+                                    }
                                     @endphp
                                     @if ($exists !== false)
                                     <a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">
