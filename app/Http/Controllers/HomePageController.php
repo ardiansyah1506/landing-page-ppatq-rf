@@ -15,12 +15,12 @@ class HomePageController extends Controller
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
                 ->orderBy('berita.created_at', 'desc')
-                ->whereNull('deleted_at')
+                ->whereNull('berita.deleted_at')
                 ->paginate(3);
 
                 $data['agendas'] = DB::table('agenda')
                 ->select('judul', 'isi', 'tanggal_mulai')
-                ->whereNull('deleted_at')
+                ->whereNull('agenda.deleted_at')
                 ->where('tanggal_mulai', '>=', DB::raw('CURDATE()'))
                 ->orderByRaw('ABS(DATEDIFF(NOW(), tanggal_mulai))')
                 ->limit(5)
