@@ -15,6 +15,7 @@ class HomePageController extends Controller
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
                 ->orderBy('berita.created_at', 'desc')
+                ->whereNull('deleted_at')
                 ->paginate(3);
 
                 $data['agendas'] = DB::table('agenda')
