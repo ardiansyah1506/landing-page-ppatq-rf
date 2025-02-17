@@ -39,6 +39,7 @@ class BeritaController extends Controller
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
                 ->whereNull('berita.deleted_at')
+                ->where('berita.id', '!=', $id_berita)
                 ->latest()
                 ->limit(4)
                 ->get();
