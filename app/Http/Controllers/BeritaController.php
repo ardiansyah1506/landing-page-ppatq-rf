@@ -28,7 +28,7 @@ class BeritaController extends Controller
     {
         try {
             $berita = DB::table('berita')
-                ->select('berita.id', 'berita.judul', 'berita.slug', 'berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
+                ->select('berita.id', 'berita.thumbnail', 'berita.judul', 'berita.slug', 'berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
                 ->where('berita.id', $id_berita)
@@ -38,6 +38,7 @@ class BeritaController extends Controller
                 ->select('berita.id', 'berita.kategori_id', 'berita.judul', 'berita.slug', 'berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'berita.user_id', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
                 ->leftJoin('users', 'berita.user_id', '=', 'users.id')
                 ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
+                ->whereNull('berita.deleted_at')
                 ->latest()
                 ->limit(4)
                 ->get();

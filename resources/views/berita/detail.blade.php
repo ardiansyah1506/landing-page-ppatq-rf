@@ -17,9 +17,13 @@
                         <h1 class="mb-4">{{$berita->judul}}</h1>
                         @php
                             Carbon\Carbon::setLocale('id');
-                            $url = $berita->thumbnail;
-                            $headers = get_headers($url);
-                            $exists = strpos($headers[0], '200');
+                            $url = $berita->thumbnail ?? null;
+                            if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                                $headers = @get_headers($url);
+                                $exists = $headers && strpos($headers[0], '200') !== false;
+                            } else {
+                                $exists = false;
+                            }
                         @endphp
                         @if ($exists !== false)
                         <img class="img-fluid" src="{{ $url }}" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -66,8 +70,12 @@
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
                             $url = $row->thumbnail;
-                            $headers = get_headers($url);
-                            $exists = strpos($headers[0], '200');
+                            if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                                $headers = @get_headers($url);
+                                $exists = $headers && strpos($headers[0], '200') !== false;
+                            } else {
+                                $exists = false;
+                            }
                         @endphp
                         @if ($exists !== false)
                         <img class="img-fluid" src="{{$url}}" style="width: 100px; height: 100px; object-fit: cover;" alt="Gambar Berita" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
