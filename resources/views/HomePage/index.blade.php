@@ -71,9 +71,9 @@
 @endphp
 <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container w-100">
-        <div class="row text-center">
+        {{-- <div class="row text-center">
             <h6 class="py-2 bg-green rounded text-white">Dapatkan informasi lengkap mengenai Penerimaan Santri Baru (PSB) <a class="fst-italic fs-2 blink" target="_blank" href="https://psb.ppatq-rf.id/">Disini!!!.</a></h6>
-        </div>
+        </div> --}}
         <div class="row mb-3">
             <div class="col-12 col-sm-9">
                 <div class="row">
