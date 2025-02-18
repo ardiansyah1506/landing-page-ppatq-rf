@@ -1,6 +1,6 @@
 @extends('layout.main_layout')
 @section('title')
-<title>Berita | PPATQ-RF</title>
+<title>Prestasi | PPATQ-RF</title>
 @endsection
 @section('header')
 @endsection

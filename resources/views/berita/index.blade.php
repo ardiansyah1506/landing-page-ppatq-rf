@@ -63,7 +63,7 @@
                 @endforeach
                 @else
                 <div class="text-center">
-                    <small class="text-muted  border-bottom">Berita Kosong</small>
+                    <small class="text-muted border-bottom">Berita Kosong</small>
                 </div>
                 @endif
             </div>
