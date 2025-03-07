@@ -94,7 +94,12 @@
                                 <div class="blog-img position-relative overflow-hidden">
                                     <div class="overflow-hidden">
                                     @php
-                                    $url = $berita->thumbnail ?? null;
+                                    if (strpos($berita->thumbnail, 'http') !== false) {
+                                        $url = $berita->thumbnail;
+                                    } else {
+                                        $url = "https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/" . $berita->thumbnail;
+                                    }
+
                                     if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
                                         $headers = @get_headers($url);
                                         $exists = $headers && strpos($headers[0], '200') !== false;

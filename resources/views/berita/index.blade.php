@@ -21,7 +21,11 @@
                                 <div class="overflow-hidden">
                                     @php
                                     Carbon\Carbon::setLocale('id');
-                                    $url = $berita->thumbnail;
+                                    if (strpos($berita->thumbnail, 'http') !== false) {
+                                        $url = $berita->thumbnail;
+                                    } else {
+                                        $url = "https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/" . $berita->thumbnail;
+                                    }
 
                                     if (!empty($url)) {
                                         // Dapatkan headers dari URL
