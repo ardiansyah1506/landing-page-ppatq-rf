@@ -101,9 +101,11 @@
                                     }
 
                                     //if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
-                                    if ($url) {
+                                    
+                                    if (!empty($url)) {
                                         $headers = @get_headers($url);
-                                        $exists = $headers && strpos($headers[0], '200') !== false;
+                                        //$exists = $headers && strpos($headers[0], '200') !== false;
+                                        $exists = true;
                                     } else {
                                         $exists = false;
                                     }
