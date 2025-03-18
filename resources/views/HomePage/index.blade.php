@@ -100,7 +100,8 @@
                                         $url = "https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/" . $berita->thumbnail;
                                     }
 
-                                    if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                                    //if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                                    if ($url) {
                                         $headers = @get_headers($url);
                                         $exists = $headers && strpos($headers[0], '200') !== false;
                                     } else {
