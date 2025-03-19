@@ -26,7 +26,7 @@
                                     } else {
                                         $url = "https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/" . $berita->thumbnail;
                                     }
-
+                                    
                                     if (!empty($url)) {
                                         // Dapatkan headers dari URL
                                         $headers = @get_headers($url);
@@ -34,7 +34,8 @@
                                         // Periksa apakah headers berhasil didapatkan
                                         if ($headers !== false) {
                                             // Cek apakah respons HTTP adalah 200 OK
-                                            $exists = strpos($headers[0], '200') !== false;
+                                            // $exists = strpos($headers[0], '200') !== false;
+                                            $exists = true;
                                         } else {
                                             $exists = false; // Tidak dapat mendapatkan headers
                                         }

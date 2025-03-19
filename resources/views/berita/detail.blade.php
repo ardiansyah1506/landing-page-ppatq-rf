@@ -23,9 +23,10 @@
                                 $url = "https://manajemen.ppatq-rf.id/assets/img/upload/berita/thumbnail/" . $berita->thumbnail;
                             }
                             
-                            if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                            if (!empty($url)) {
                                 $headers = @get_headers($url);
-                                $exists = $headers && strpos($headers[0], '200') !== false;
+                                // $exists = $headers && strpos($headers[0], '200') !== false;
+                                $exists = true;
                             } else {
                                 $exists = false;
                             }
@@ -38,12 +39,14 @@
                         <div class="d-flex justify-content-end mt-5">
                         @php
                             $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/berita/foto_isi/' . $berita->gambar_dalam;
-                            if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                            // if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                            if (!empty($url)) {
                                 $headers = @get_headers($url);
-                                $exists = $headers && strpos($headers[0], '200') !== false;
+                                // $exists = $headers && strpos($headers[0], '200') !== false;
+                                $exists = true;
                             } else {
                                 $exists = false;
-                            } 
+                            }
                         @endphp
                         <div class="col col-sm-7">
                             <a target="_blank" class="fs-4" href="https://www.facebook.com/sharer/sharer.php?u={{ route('berita.detail', ['id_berita' => $berita->id]) }}"><i class="bi bi-facebook"></i></a>
@@ -79,9 +82,11 @@
                         <div class="d-flex rounded overflow-hidden mb-3">
                             @php
                             $url = $row->thumbnail;
-                            if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                            // if ($url && filter_var($url, FILTER_VALIDATE_URL)) {
+                            if (!empty($url)) {
                                 $headers = @get_headers($url);
-                                $exists = $headers && strpos($headers[0], '200') !== false;
+                                // $exists = $headers && strpos($headers[0], '200') !== false;
+                                $exists = true;
                             } else {
                                 $exists = false;
                             }
