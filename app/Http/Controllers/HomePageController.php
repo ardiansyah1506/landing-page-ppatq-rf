@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Crypt;
 
 class HomePageController extends Controller
 {
@@ -17,6 +19,19 @@ class HomePageController extends Controller
                 ->orderBy('berita.created_at', 'desc')
                 ->whereNull('berita.deleted_at')
                 ->paginate(3);
+
+                $modifiedItems = collect($data['beritas']->items())->map(function ($item) {
+                    $item->id = Crypt::encryptString($item->id . "ppatq");
+                    return $item;
+                });
+                
+                $data['beritas'] = new LengthAwarePaginator(
+                    $modifiedItems,
+                    $data['beritas']->total(),
+                    $data['beritas']->perPage(),
+                    $data['beritas']->currentPage(),
+                    ['path' => request()->url(), 'query' => request()->query()]
+                );
 
                 $data['agendas'] = DB::table('agenda')
                 ->select('judul', 'isi', 'tanggal_mulai')
