@@ -9,7 +9,9 @@
                         PPATQ RAUDLATUL FALAH - PATI
                     </small>
                 </div>
-                {!! $about->tentang !!}
+                <span class="text-justify">
+                    {!! $about->tentang !!}
+                </span>
             </div>
             <div class="col-lg-6 col-12" style="min-height: 200px;">
                 <div class="position-relative h-100" style="overflow: hidden;">

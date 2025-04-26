@@ -9,6 +9,11 @@
     @yield('title')
     @include('layout.head')
     @yield('header')
+    <style>
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
 </head>
 
 <body class="p-4" style="background-color: #F3F7EC;">
