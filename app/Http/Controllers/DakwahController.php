@@ -18,6 +18,10 @@ class DakwahController extends Controller
             $data = DB::table('dakwah')
                 ->where('dakwah.id', $idDakwah)
                 ->first();
+            
+            if ($data) {
+                $data->idEnkripsi = Crypt::encryptString($data->id . "ppatq");
+            }
 
             $dataList = DB::table('dakwah')
                 ->whereNull('dakwah.deleted_at')
