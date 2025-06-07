@@ -277,7 +277,20 @@
                 </div>
 
                 <div class="row mt-5">
+                     <div class="section-title position-relative" style="max-width: 600px;">
+                        <h4 class="fw-bold text-green text-uppercase text-green py-2">Dakwah</h4>
+                    </div>
                     <div class="row">
+                        @foreach ($dakwah as $row)
+                            <div class="col-12 col-sm-3 mt-2">
+                                {{-- <h4 class="mb-3"><a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">{{$berita->judul}}</a></h4> --}}
+                                {{-- <h5 class="mb-1"><a class="text-decoration-none text-dark" href="#">{{$row->judul}}</a></h5> --}}
+                                <a href="{{ route('dakwah.detail', ['idDakwah' => $row->idEnkripsi]) }}" class="text-decoration-none"><p class="mb-0 py-2 text-body"><span class="fw-bolder fs-6 text-dark">{{$row->judul}}: </span>{{ Str::limit(strip_tags($row->isi_dakwah),150) }}</p></a>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="row mt-5">
                         <div class="col-12 col-sm-9 px-4">
                             <div class="d-flex flex-column flex-md-row p-4 gap-5">
                                 <img loading="lazy" src="https://ppatq-rf.sch.id/wp-content/uploads/2013/04/abah-sohib.png"

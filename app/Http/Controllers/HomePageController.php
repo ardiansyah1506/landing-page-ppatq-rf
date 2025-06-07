@@ -67,6 +67,13 @@ class HomePageController extends Controller
                 ->where('published', 1)
                 ->get();
 
+                $data['dakwah'] = DB::table('dakwah')
+                ->where('deleted_at', null)
+                ->get()->map(function ($item) {
+                    $item->idEnkripsi = Crypt::encryptString($item->id . "ppatq");
+                    return $item;
+                });
+
             return view('HomePage.index', $data);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

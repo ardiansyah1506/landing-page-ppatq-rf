@@ -27,6 +27,8 @@ Route::get('/berita', $controller_path .'\BeritaController@index')->name('berita
 Route::get('/agenda', $controller_path .'\AgendaController@index')->name('agenda');
 Route::get('/berita/{id_berita}', $controller_path .'\BeritaController@detail')->name('berita.detail');
 
+Route::get('/dakwah/{idDakwah}', $controller_path .'\DakwahController@detail')->name('dakwah.detail');
+
 Route::get('/kelas-kamar', $controller_path .'\KelasKamarController@index')->name('kelas-kamar');
 Route::get('/kelas/{id}', $controller_path .'\KelasKamarController@showKelas')->name('show-kelas');
 Route::get('/kamar/{id}', $controller_path .'\KelasKamarController@showKamar')->name('show-kamar');
