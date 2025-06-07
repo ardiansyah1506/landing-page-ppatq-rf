@@ -17,7 +17,7 @@
                         <h1 class="mb-4">{{$data->judul}}</h1>
                         <div class="d-flex justify-content-end mt-5">
                             <div class="col col-sm-7">
-                                <a target="_blank" class="fs-4" href="https://www.facebook.com/sharer/sharer.php?u={{ route('dakwah.detail', ['idDakwah' => $data->id]) }}"><i class="bi bi-facebook"></i></a>
+                                <a target="_blank" class="fs-4" href="https://www.facebook.com/sharer/sharer.php?u={{ route('dakwah.detail', ['idDakwah' => $data->idEnkripsi]) }}"><i class="bi bi-facebook"></i></a>
                             </div>
                             <div class="col col-sm-5 d-sm-flex">
                                 <p>
