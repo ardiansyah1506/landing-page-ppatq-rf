@@ -39,3 +39,5 @@ Route::post('/get_murroby', $controller_path .'\PengasuhStaffController@get_murr
 Route::post('/get_staff', $controller_path .'\PengasuhStaffController@get_staff')->name('get_staff');
 
 Route::get('/layanan', $controller_path .'\LayananController@index')->name('layanan');
+
+Route::get('/app-wali-santri', $controller_path .'\NewsController@indexAppWaliSantri')->name('app-wali-santri');
