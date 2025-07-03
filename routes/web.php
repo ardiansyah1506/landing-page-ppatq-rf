@@ -41,3 +41,7 @@ Route::post('/get_staff', $controller_path .'\PengasuhStaffController@get_staff'
 Route::get('/layanan', $controller_path .'\LayananController@index')->name('layanan');
 
 Route::get('/app-wali-santri', $controller_path .'\NewsController@indexAppWaliSantri')->name('app-wali-santri');
+
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy.index');
+})->name('privacy-policy');
