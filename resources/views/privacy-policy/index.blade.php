@@ -19,7 +19,9 @@
     <meta property="og:site_name" content="TermsFeed" />
 
     <link rel="canonical" href="https://www.termsfeed.com/live/19654657-9e5a-430c-9af1-980c964b9a19" />
-
+<style>
+    body{background:#fff;color:#000;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;line-height:28px;margin:0}h1{font-size:40px;line-height:60px}h1,h2{font-weight:700}h2{font-size:32px;line-height:48px}h3{font-size:24px;line-height:36px}h3,h4{font-weight:700}h4{font-size:20px;line-height:30px}h5{font-size:16px}h5,h6{line-height:24px;font-weight:700}h6{font-size:cacl(16px)}a{text-decoration:none;cursor:pointer;color:#000}a:hover,a[rel~=nofollow]{text-decoration:underline}a[rel~=nofollow]{color:#0452a5}a[rel~=nofollow]:hover{text-decoration:none}.visible{display:block}.hidden{display:none}.page{width:100%}.container{position:relative;width:90%;max-width:1024px;margin:0 auto}.header{color:#000;padding:16px 0}.header .title{font-size:24px;line-height:24px;font-weight:700;margin:0}.translations-list-container{color:#000;padding-bottom:8px;margin:0 0 16px}.translations-list-container .translations-list{margin:0;padding:0;list-style:none}.translations-list-container .translations-list .translations-list-item{display:inline-block;padding:0;margin:0 8px 8px 0;color:#fff}.translations-list-container .translations-list .translations-list-item a{display:inline-block;padding:4px 8px}.translations-list-container .translations-list .translations-list-item a.active{color:#fff;background:#334055}.translations-content-container{padding-top:8px;border-top:1px solid #eee}.footer{border-top:1px solid #eee;margin:32px 0 0;padding:16px 0}
+</style>
     
     
     
@@ -249,6 +251,10 @@
 </script>
 
 <script defer data-domain="termsfeed-livelink--production" data-api="/plausible/event" src="/plausible/script.js"></script>
+
+<script>
+    !function(){"use strict";var a=window.location,r=window.document,o=r.currentScript,l=o.getAttribute("data-api")||new URL(o.src).origin+"/api/event";function s(t,e){t&&console.warn("Ignoring Event: "+t),e&&e.callback&&e.callback()}function t(t,e){if(/^localhost$|^127(\.[0-9]+){0,2}\.[0-9]+$|^\[::1?\]$/.test(a.hostname)||"file:"===a.protocol)return s("localhost",e);if(window._phantom||window.__nightmare||window.navigator.webdriver||window.Cypress)return s(null,e);try{if("true"===window.localStorage.plausible_ignore)return s("localStorage flag",e)}catch(t){}var n={},i=(n.n=t,n.u=a.href,n.d=o.getAttribute("data-domain"),n.r=r.referrer||null,e&&e.meta&&(n.m=JSON.stringify(e.meta)),e&&e.props&&(n.p=e.props),new XMLHttpRequest);i.open("POST",l,!0),i.setRequestHeader("Content-Type","text/plain"),i.send(JSON.stringify(n)),i.onreadystatechange=function(){4===i.readyState&&e&&e.callback&&e.callback()}}var e=window.plausible&&window.plausible.q||[];window.plausible=t;for(var n,i=0;i<e.length;i++)t.apply(this,e[i]);function p(){n!==a.pathname&&(n=a.pathname,t("pageview"))}var c,w=window.history;w.pushState&&(c=w.pushState,w.pushState=function(){c.apply(this,arguments),p()},window.addEventListener("popstate",p)),"prerender"===r.visibilityState?r.addEventListener("visibilitychange",function(){n||"visible"!==r.visibilityState||p()}):p()}();
+</script>
 
 <script type="text/javascript">
     "use strict";
