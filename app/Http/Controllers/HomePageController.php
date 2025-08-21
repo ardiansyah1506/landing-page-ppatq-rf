@@ -70,7 +70,7 @@ class HomePageController extends Controller
                 $data['dakwah'] = DB::table('dakwah')
                 ->where('deleted_at', null)
                 ->get()
-                ->limit(5)
+                ->limit(4)
                 ->map(function ($item) {
                     $item->idEnkripsi = Crypt::encryptString($item->id . "ppatq");
                     return $item;
