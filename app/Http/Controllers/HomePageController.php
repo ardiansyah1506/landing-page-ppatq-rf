@@ -68,13 +68,13 @@ class HomePageController extends Controller
                 ->get();
 
                 $data['dakwah'] = DB::table('dakwah')
-                ->where('deleted_at', null)
-                ->get()
-                ->limit(4)
-                ->map(function ($item) {
-                    $item->idEnkripsi = Crypt::encryptString($item->id . "ppatq");
-                    return $item;
-                });
+                    ->whereNull('deleted_at')
+                    ->limit(4)
+                    ->get()
+                    ->map(function ($item) {
+                        $item->idEnkripsi = Crypt::encryptString($item->id . "ppatq");
+                        return $item;
+                    });
 
             return view('HomePage.index', $data);
         } catch (\Exception $e) {
