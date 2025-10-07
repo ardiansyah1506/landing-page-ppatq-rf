@@ -15,7 +15,7 @@
             </div>
             <div class="col-lg-6 col-12" style="min-height: 200px;">
                 <div class="position-relative h-100" style="overflow: hidden;">
-                    <iframe loading="lazy" title="PONDOK PESANTREN ANAK TAHFIDZUL QURAN RAUDLATUL FALAH | Bermi Gembong Pati Jawa Tengah Indonesia" src="https://www.youtube.com/embed/V_Q4hHxonGg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="width: 100%; height: 100%;"></iframe>
+                    <iframe loading="lazy" src="https://www.youtube.com/embed/ZRjG7ofmnnA?si=vKlnkISWsWXa4_vx" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="width: 100%; height: 100%;"></iframe>
                 </div>
             </div>
         </div>

@@ -68,7 +68,7 @@
 
 @section('content')
 <div class="div">
-    <iframe loading="lazy" title="PONDOK PESANTREN ANAK TAHFIDZUL QURAN RAUDLATUL FALAH | Bermi Gembong Pati Jawa Tengah Indonesia" src="https://www.youtube.com/embed/V_Q4hHxonGg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
+    <iframe loading="lazy" src="https://www.youtube.com/embed/ZRjG7ofmnnA?si=vKlnkISWsWXa4_vx" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
 </div>
 @php
     use Carbon\Carbon;
@@ -133,7 +133,10 @@
                                 </div>
                                 <div class="p-4">
                                     <div class="d-flex mb-3">
-                                        <small class="me-2 fst-italic"><i class="far fa-calendar-alt text-green me-2"></i>{{ \Carbon\Carbon::parse($berita->created_at)->diffForHumans() }}</small>
+                                        <small class="me-2 fst-italic">
+                                            <i class="far fa-calendar-alt text-green me-2"></i>
+                                            {{ \Carbon\Carbon::parse($berita->created_at)->diffForHumans(now(), false, false, 2) }}
+                                        </small>
                                     </div>
                                     <h4 class="mb-3"><a class="text-decoration-none text-dark" href="{{ route('berita.detail', ['id_berita' => $berita->id]) }}">{{$berita->judul}}</a></h4>
                                     <p class="mb-0">{{ Str::limit(strip_tags($berita->isi_berita),150) }}</p>
