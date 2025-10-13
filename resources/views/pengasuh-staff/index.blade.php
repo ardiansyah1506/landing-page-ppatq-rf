@@ -166,11 +166,6 @@
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ ustad.nama } ${ ustad.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
-                                    <ul class="list-unstyled w-100">
-                                        <li class="text-sm mb-1">
-                                            Jenis Kelamin : ${ ustad.jenis_kelamin ?? '-' }
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -245,11 +240,6 @@
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ murroby.nama } ${ murroby.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
-                                    <ul class="list-unstyled w-100">
-                                        <li class="text-sm mb-1">
-                                            Jenis Kelamin : ${ murroby.jenis_kelamin ?? '-' }
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -324,9 +314,6 @@
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ staff.nama } ${ staff.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
                                     <ul class="list-unstyled w-100">
-                                        <li class="text-sm mb-1">
-                                            Jenis Kelamin : ${ staff.jenis_kelamin ?? '-' }
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
