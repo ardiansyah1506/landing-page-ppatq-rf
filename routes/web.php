@@ -45,3 +45,6 @@ Route::get('/app-wali-santri', $controller_path .'\NewsController@indexAppWaliSa
 Route::get('/privacy-policy', function () {
     return view('privacy-policy.index');
 })->name('privacy-policy');
+
+Route::get('/cek-santri', $controller_path .'\CekSantriController@index')->name('cek-santri.index');
+Route::post('/cek-santri', $controller_path .'\CekSantriController@submit')->name('cek-santri.submit');
