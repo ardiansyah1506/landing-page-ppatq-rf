@@ -55,6 +55,59 @@
     
     }
 
+    .sosmed-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border: 2px solid #d1e2d7;
+        border-radius: 16px;
+        background: transparent;
+        color: #1a5632;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .sosmed-link i {
+        font-size: 1.4rem;
+    }
+    .sosmed-link:hover {
+        color: #1a5632;
+        border-color: #20c997;
+        transform: translateY(-3px);
+    }
+    .sosmed-link.facebook i { color: #1877f2; }
+    .sosmed-link.youtube i { color: #ff0000; }
+    .sosmed-link.instagram-link i { color: #e4405f; }
+    .sosmed-link.tiktok-link i { color: #000; }
+
+    .sosmed-panel {
+        border-top: 3px solid #20c997;
+        padding: 16px 4px 0;
+        margin-bottom: 24px;
+    }
+    .sosmed-foto {
+        border-radius: 16px;
+    }
+    .sosmed-nama {
+        color: #1a5632;
+        font-weight: 800;
+    }
+    .sosmed-stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px dashed #d1e2d7;
+        color: #5c8c6d;
+    }
+    .sosmed-stat:last-child {
+        border-bottom: 0;
+    }
+    .sosmed-stat strong {
+        color: #1a5632;
+    }
+
     .bg-yellow-soft {
         background-color: #fff3cd; /* Bootstrap alert-warning background */
         color: #856404; /* Sesuai teks pada alert warning */
@@ -203,66 +256,54 @@
             </div>
             <div class="row mb-3">
                 <div class="col-12 col-sm-9">
-                    <div class="row d-flex justify-content-center gap-3">
-                        <div class="col-1">
-                            <a href="https://www.facebook.com/pprtq.r.falah" target="_blank" class="text-decoration-none fs-1"><i class="bi bi-facebook"></i></a>
-                        </div>
-                        <div class="col-1">
-                            <a href="https://www.youtube.com/@PPATQTV" target="_blank" class="text-decoration-none fs-1 text-danger"><i class="bi bi-youtube"></i></a>
-                        </div>
-                        <div class="col-1">
-                            <a href="https://www.instagram.com/ppatq_raudlatulfalah/" target="_blank" class="text-decoration-none fs-1 instagram"><i class="bi bi-instagram"></i></a>
-                        </div>
-                        <div class="col-1">
-                            <a href="https://www.tiktok.com/@ppatq.raudlatulfalah?lang=en" target="_blank" class="text-decoration-none text- fs-1 tiktok"><i class="bi bi-tiktok"></i></a>
-                        </div>
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a href="https://www.facebook.com/pprtq.r.falah" target="_blank" rel="noopener" class="sosmed-link facebook">
+                            <i class="bi bi-facebook"></i> Facebook
+                        </a>
+                        <a href="https://www.youtube.com/@PPATQTV" target="_blank" rel="noopener" class="sosmed-link youtube">
+                            <i class="bi bi-youtube"></i> YouTube
+                        </a>
+                        <a href="https://www.instagram.com/ppatq_raudlatulfalah/" target="_blank" rel="noopener" class="sosmed-link instagram-link">
+                            <i class="bi bi-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@ppatq.raudlatulfalah?lang=en" target="_blank" rel="noopener" class="sosmed-link tiktok-link">
+                            <i class="bi bi-tiktok"></i> TikTok
+                        </a>
                     </div>
-                    <div class="row d-flex justify-content-center">
-                        <div class="row d-flex align-items-center justify-content-center gap-3">
-                            <div id="youtube-iframe" class="iframe-container"></div>
-                            <div id="facebook-iframe" class="iframe-container"></div>
-                        </div>
-                        {{-- <div class="row d-flex align-items-center justify-content-center">
-                            <div id="tiktok-iframe"></div>
-                        </div> --}}
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <div id="youtube-iframe" class="iframe-container"></div>
+                        <div id="facebook-iframe" class="iframe-container"></div>
+                    </div>
+                    {{-- <div id="tiktok-iframe"></div> --}}
+                </div>
+                <div class="col mt-5 mt-sm-0">
+                    <div class="sosmed-panel">
+                        <div id="santri-random" class="row mb-4 pb-3 d-flex justify-content-center"></div>
+                        <div id="pegawai-random" class="row d-flex justify-content-center"></div>
+                    </div>
+                    <div class="sosmed-panel">
+                        <div class="sosmed-stat"><span><i class="bi bi-person-workspace"></i> Guru</span> <strong>{{ $jumlahGuru }}</strong></div>
+                        <div class="sosmed-stat"><span><i class="bi bi-person-fill"></i> Murroby</span> <strong>{{ $jumlahMurroby }}</strong></div>
+                        <div class="sosmed-stat"><span><i class="bi bi-person-standing"></i> Santri Putra</span> <strong>{{ $jumlahSiswaLaki }}</strong></div>
+                        <div class="sosmed-stat"><span><i class="bi bi-person-standing-dress"></i> Santri Putri</span> <strong>{{ $jumlahSiswaPerempuan }}</strong></div>
+                    </div>
+                    <div class="sosmed-panel">
+                        <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+                        <!-- Histats.com  START  (aync)-->
+                        <script type="text/javascript">var _Hasync= _Hasync|| [];
+                        _Hasync.push(['Histats.start', '1,4895326,4,401,118,80,00011011']);
+                        _Hasync.push(['Histats.fasi', '1']);
+                        _Hasync.push(['Histats.track_hits', '']);
+                        (function() {
+                        var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+                        hs.src = ('//s10.histats.com/js15_as.js');
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                        })();</script>
+                        <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4895326&101" alt="" border="0"></a></noscript>
+                        <!-- Histats.com  END  -->
                     </div>
                 </div>
-                <div class="col gap-4">
-                    <div class="col mt-5 mt-sm-0 mb-4">
-                        <div class="col-12 py-2 bg-green rounded-bottom"></div>
-                        <div class="col px-3 py-3 rounded-bottom d-flex flex-column">
-                            <div id="santri-random" class="row mb-4 border-bottom py-2 d-flex justify-content-center"></div>
-                            <div id="pegawai-random" class="row border-bottom py-2 d-flex justify-content-center"></div>
-                        </div>
-                    </div>
-                    <div class="col mt-5 mt-sm-0 px-2">
-                        <div class="col px-3 py-3 rounded-bottom d-flex flex-column">
-                            <span><i class="bi bi-person-workspace"></i> Guru : {{ $jumlahGuru }}</span>
-                            <span><i class="bi bi-person-fill"></i> Murroby : {{ $jumlahMurroby }}</span>
-                            <span><i class="bi bi-person-standing"></i> Santri Putra : {{ $jumlahSiswaLaki }}</span>
-                            <span><i class="bi bi-person-standing-dress"></i> Santri Putri : {{ $jumlahSiswaPerempuan }}</span>
-                        </div>
-                    </div>
-                    <div class="col mt-5 mt-sm-0 px-2">
-                        <div class="col-12 py-2 bg-green rounded-bottom"></div>
-                        <div class="col px-3 py-3 shadow-sm rounded-bottom d-flex flex-column">
-                            <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-                                <!-- Histats.com  START  (aync)-->
-                                <script type="text/javascript">var _Hasync= _Hasync|| [];
-                                _Hasync.push(['Histats.start', '1,4895326,4,401,118,80,00011011']);
-                                _Hasync.push(['Histats.fasi', '1']);
-                                _Hasync.push(['Histats.track_hits', '']);
-                                (function() {
-                                var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-                                hs.src = ('//s10.histats.com/js15_as.js');
-                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-                                })();</script>
-                                <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4895326&101" alt="" border="0"></a></noscript>
-                                <!-- Histats.com  END  -->
-                        </div>
-                    </div>
-                </div>
-                
+
                 <div class="row mt-5">
                     <!-- Fasilitas Section -->
                     <div class="row">
@@ -366,30 +407,33 @@
         }
 
         function displaySantriData(santri) {
+            if (!santri) { return; }
             $('#santri-random').html(`
-                        <div class="col-6 d-flex flex-column align-items-center text-white">
+                        <div class="col-6 d-flex flex-column align-items-center">
                             <img loading="lazy" src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ santri.photo }"
-                                    class="img-fluid text-dark rounded" alt="foto ${ santri.nama }">
+                                    class="img-fluid sosmed-foto" alt="foto ${ santri.nama }">
                         </div>
                         <div class="col">
-                            <p class="text-uppercase fs-8 fw-bold mb-0">${ santri.nama }</p>
-                            <p class="mb-0">Kelas : <span class="text-uppercase">${santri.kelas}</span></p>
+                            <p class="sosmed-nama text-uppercase mb-0">${ santri.nama }</p>
+                            <p class="mb-0">Kelas : <span class="text-uppercase">${ santri.kelas }</span></p>
                         </div>
             `);
-        }   
+        }
+
         function displayPegawaiData(pegawai) {
+            if (!pegawai) { return; }
             $('#pegawai-random').html(`
-                <div class="col-5 d-flex flex-column align-items-center text-white">
+                <div class="col-5 d-flex flex-column align-items-center">
                     <img loading="lazy" src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ pegawai.photo }"
-                        class="img-fluid text-dark rounded" alt="foto ${ pegawai.nama }">
+                        class="img-fluid sosmed-foto" alt="foto ${ pegawai.nama }">
                 </div>
                 <div class="col">
-                    <p class="text-uppercase fs-8 fw-bold mb-0">${ pegawai.nama }</p>
-                    <p class="mb-0">Sebagai : ${pegawai.jabatan}</p>
+                    <p class="sosmed-nama text-uppercase mb-0">${ pegawai.nama }</p>
+                    <p class="mb-0">Sebagai : ${ pegawai.jabatan }</p>
                 </div>
             `);
-        }   
-    
+        }
+
        $(document).ready(function() {
             fetchDataRandom();
             $('.owl-carousel').owlCarousel({
