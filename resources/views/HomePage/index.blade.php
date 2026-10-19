@@ -68,7 +68,7 @@
 
 @section('content')
 <div class="div">
-    <iframe loading="lazy" src="https://youtu.be/i362ZGnlCQs?si=RP4Gz3R3Qym9n_gY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
+    <iframe loading="lazy" src="https://www.youtube.com/embed/i362ZGnlCQs?si=A1ogGaLnHYI1puw8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
 </div>
 @php
     use Carbon\Carbon;
