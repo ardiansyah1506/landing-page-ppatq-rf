@@ -728,6 +728,65 @@ iframe {
     }
 }
 
+/********** Pagination **********/
+.pagination-container {
+    margin-top: 1.5rem;
+}
+
+.pagination-ppatq {
+    gap: 6px;
+}
+
+.pagination-ppatq .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px !important;
+    color: #333;
+    background-color: #fff;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+.pagination-ppatq .page-link:hover {
+    color: #fff;
+    background-color: #2dcc70;
+    border-color: #2dcc70;
+}
+
+.pagination-ppatq .page-link:focus {
+    box-shadow: 0 0 0 0.2rem rgba(45, 204, 112, 0.25);
+}
+
+.pagination-ppatq .page-item.active .page-link {
+    color: #fff;
+    background-color: #2dcc70;
+    border-color: #2dcc70;
+    font-weight: 600;
+}
+
+.pagination-ppatq .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+@media (max-width: 576px) {
+    .pagination-ppatq {
+        gap: 4px;
+    }
+    .pagination-ppatq .page-link {
+        min-width: 34px;
+        height: 34px;
+        padding: 0 8px;
+        font-size: 0.85rem;
+    }
+}
+
 
 /********** Responsive helpers **********/
 .foto-profil {
