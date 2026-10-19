@@ -404,14 +404,6 @@
             setInterval(fetchDataRandom, 60000);
 
             $('.carousel-item').eq(0).addClass('active');
-            var tabsNewAnim = $('#navbarSupportedContent');
-            var selectorNewAnim = tabsNewAnim.find('li').length;
-            var activeItemNewAnim = tabsNewAnim.find('.active');
-            activeItemNewAnim.removeClass('active');
-            $('#home').addClass('active');
-            setTimeout(function() {
-                test();
-            }, 100);
 
             // YouTube URLs
             const youtube = [

@@ -136,17 +136,3 @@
 </div>
 @endsection
 
-@section('script')
-<script>
-    $(document).ready(function() {
-     var tabsNewAnim = $('#navbarSupportedContent');
-     var selectorNewAnim = tabsNewAnim.find('li').length;
-     var activeItemNewAnim = tabsNewAnim.find('.active');
-     activeItemNewAnim.removeClass('active');
-     $('#about').addClass('active');
-     setTimeout(function() {
-         test();
-     }, 100); // Slight delay to ensure elements are rendered
- });
-</script>
-@endsection

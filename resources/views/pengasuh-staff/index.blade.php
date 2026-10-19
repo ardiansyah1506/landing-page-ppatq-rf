@@ -111,14 +111,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            var tabsNewAnim = $('#navbarSupportedContent');
-            var selectorNewAnim = tabsNewAnim.find('li').length;
-            var activeItemNewAnim = tabsNewAnim.find('.active');
-            activeItemNewAnim.removeClass('active');
-            $('#pengasuh-staff').addClass('active');
-            setTimeout(function() {
-                test();
-            }, 100); // Slight delay to ensure elements are rendered
 
             var ustadData = []; // Menyimpan data ustad
             var currentUstadIndex = 0; // Index awal data yang ditampilkan

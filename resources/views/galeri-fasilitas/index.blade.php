@@ -125,15 +125,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
 <script>
        $(document).ready(function() {
-            var tabsNewAnim = $('#navbarSupportedContent');
-            var selectorNewAnim = tabsNewAnim.find('li').length;
-            var activeItemNewAnim = tabsNewAnim.find('.active');
-            activeItemNewAnim.removeClass('active');
-            
-            $('#galeri-fasilitas').addClass('active');
-            setTimeout(function() {
-                test();
-            }, 100);
 
             var popup_btn = $('.popup-btn');
                 popup_btn.magnificPopup({

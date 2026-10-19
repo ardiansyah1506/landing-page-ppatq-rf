@@ -109,14 +109,6 @@
 @section('script')
 <script>
     $(document).ready(function() {
-        var tabsNewAnim = $('#navbarSupportedContent');
-        var selectorNewAnim = tabsNewAnim.find('li').length;
-        var activeItemNewAnim = tabsNewAnim.find('.active');
-        activeItemNewAnim.removeClass('active');
-        $('#kelas').addClass('active');
-        setTimeout(function() {
-            test();
-        }, 100);
 
         $('#imageModal').on('show.bs.modal', function (event) {
             const triggerImage = $(event.relatedTarget); // Elemen yang memicu modal

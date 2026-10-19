@@ -33,17 +33,3 @@
 @endsection
 
 
-@section('script')
-<script>
-       $(document).ready(function() {
-        var tabsNewAnim = $('#navbarSupportedContent');
-        var selectorNewAnim = tabsNewAnim.find('li').length;
-        var activeItemNewAnim = tabsNewAnim.find('.active');
-        activeItemNewAnim.removeClass('active');
-        $('#visimisi').addClass('active');
-        setTimeout(function() {
-            test();
-        }, 100);
-    });
-</script>
-@endsection

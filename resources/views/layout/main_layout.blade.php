@@ -33,11 +33,26 @@
             </div>
         </div>
     </div>
+    @php
+        $menuAktif = match (true) {
+            request()->routeIs('HomePage', 'dakwah.*') => 'home',
+            request()->routeIs('aboutPage', 'visimisi', 'sekapursirih') => 'about',
+            request()->routeIs('berita', 'berita.*') => 'berita',
+            request()->routeIs('agenda') => 'agenda',
+            request()->routeIs('galeri-fasilitas') => 'galeri-fasilitas',
+            request()->routeIs('pengasuh-staff') => 'pengasuh-staff',
+            request()->routeIs('kesantrian') => 'kesantrian',
+            request()->routeIs('prestasi') => 'prestasi',
+            request()->routeIs('kelas-kamar', 'show-kelas', 'show-kamar') => 'kelas-kamar',
+            request()->routeIs('layanan') => 'layanan',
+            default => '',
+        };
+    @endphp
     <nav class="navbar navbar-expand-custom navbar-mainbg">
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" data-active-menu="{{ $menuAktif }}">
             <ul class="navbar-nav ml-auto">
                 <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
                 <li class="nav-item" id="home">
@@ -90,32 +105,6 @@
         <!-- Footer End -->
     </div>
     
-<script>
-    function test() {
-        var tabsNewAnim = $('#navbarSupportedContent');
-        var selectorNewAnim = tabsNewAnim.find('li').length;
-        var activeItemNewAnim = tabsNewAnim.find('.active');
-        var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-        var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-        var itemPosNewAnimTop = activeItemNewAnim.position().top;
-        var itemPosNewAnimLeft = activeItemNewAnim.position().left;
-    
-        // Update the .hori-selector position
-        $(".hori-selector").css({
-            "top": itemPosNewAnimTop + "px", 
-            "left": itemPosNewAnimLeft + "px",
-            "height": activeWidthNewAnimHeight + "px",
-            "width": activeWidthNewAnimWidth + "px"
-        });
-     // Call test() after the navbar is toggled
-     $(".navbar-toggler").click(function() {
-            $(".navbar-collapse").slideToggle(300);
-        });
-  
-    }
-    
- 
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -127,6 +116,97 @@
     
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        (function ($) {
+            var STORAGE_KEY = 'ppatq:menu-terakhir';
+            var $nav = $('#navbarSupportedContent');
+            var $selector = $nav.find('.hori-selector');
+            var currentId = $nav.data('active-menu');
+            var $current = currentId ? $('#' + currentId) : $();
+
+            function readLast() {
+                try { return sessionStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+            }
+
+            function saveLast(id) {
+                try {
+                    if (id) { sessionStorage.setItem(STORAGE_KEY, id); } else { sessionStorage.removeItem(STORAGE_KEY); }
+                } catch (e) {}
+            }
+
+            function setActive($item) {
+                $nav.find('li.active').removeClass('active');
+                $item.addClass('active');
+            }
+
+            // Geser highlight ke menu; animate=false langsung loncat tanpa transisi
+            function moveTo($item, animate) {
+                if (!$item.length || !$nav.is(':visible')) { return false; }
+
+                var pos = $item.position();
+                if (!animate) { $selector.css('transition', 'none'); }
+                $selector.css({
+                    top: pos.top + 'px',
+                    left: pos.left + 'px',
+                    height: $item.innerHeight() + 'px',
+                    width: $item.innerWidth() + 'px'
+                });
+                if (!animate) {
+                    $selector[0].offsetHeight; // paksa reflow sebelum transisi dinyalakan lagi
+                    $selector.css('transition', '');
+                }
+                return true;
+            }
+
+            function init() {
+                if (!$current.length) {
+                    // Halaman yang tidak punya menu (cek santri, privacy policy, dll)
+                    $selector.css('width', 0);
+                    saveLast('');
+                    return;
+                }
+
+                var lastId = readLast();
+                var $last = lastId && lastId !== currentId ? $('#' + lastId) : $();
+
+                if ($last.length && $nav.is(':visible')) {
+                    // Mulai dari menu terakhir, lalu geser ke menu halaman ini
+                    setActive($last);
+                    moveTo($last, false);
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(function () {
+                            setActive($current);
+                            moveTo($current, true);
+                        });
+                    });
+                } else {
+                    setActive($current);
+                    moveTo($current, false);
+                }
+
+                saveLast(currentId);
+            }
+
+            $('.navbar-toggler').on('click', function () {
+                var $toggler = $(this);
+                $nav.slideToggle(300, function () {
+                    $toggler.attr('aria-expanded', $nav.is(':visible'));
+                    moveTo($current, false);
+                });
+            });
+
+            var resizeTimer;
+            $(window).on('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () { moveTo($current, false); }, 100);
+            });
+
+            // Lebar menu berubah setelah font web selesai dimuat
+            $(window).on('load', function () { moveTo($current, true); });
+
+            init();
+        })(jQuery);
+    </script>
     @yield('script')
 </body>
 </html>
