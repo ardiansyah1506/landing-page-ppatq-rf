@@ -20,6 +20,14 @@
         height: 100%;
     }
 
+    .video-hero {
+        display: block;
+        aspect-ratio: 16 / 9;
+        max-height: 600px;
+        height: auto;
+        margin-top: 0;
+    }
+
     .carousel-small {
         max-width: 100%; /* Batasi lebar maksimal carousel */
         margin: 0 auto;   /* Pusatkan carousel */
@@ -68,7 +76,7 @@
 
 @section('content')
 <div class="div">
-    <iframe loading="lazy" src="https://www.youtube.com/embed/i362ZGnlCQs?si=A1ogGaLnHYI1puw8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="h-100 w-100 mt-0" style="min-height:600px;"></iframe>
+    <iframe loading="lazy" src="https://www.youtube.com/embed/i362ZGnlCQs?si=A1ogGaLnHYI1puw8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" class="video-hero w-100"></iframe>
 </div>
 @php
     use Carbon\Carbon;

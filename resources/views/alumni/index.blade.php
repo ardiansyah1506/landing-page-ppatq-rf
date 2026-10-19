@@ -49,11 +49,10 @@
                                 <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
                                     <div class="col-5 d-flex justify-content-center align-items-center">
                                         <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ alumni.photo }"
-                                            class="rounded img-fluid p-2"
+                                            class="rounded img-fluid p-2 foto-profil"
                                             alt="foto profil ${ alumni.nama }"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#imageModal"
-                                            style="height: 200px; width: 150px;">
+                                            data-bs-target="#imageModal">
                                     </div>
                                     <div class="p-1 d-flex flex-column gap-3 col py-2">
                                         <div class="col-11 border border-success"></div>

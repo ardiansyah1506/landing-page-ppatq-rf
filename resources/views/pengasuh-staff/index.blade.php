@@ -153,8 +153,7 @@
                                     <img src="${ ustad.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + ustad.photo 
                                         : 'https://ui-avatars.com/api/?name=' + ustad.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2"
-                                    style="height: 200px; width: 150px;">
+                                    class="rounded img-fluid p-2 foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ ustad.nama } ${ ustad.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
@@ -227,8 +226,7 @@
                                     <img src="${ murroby.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + murroby.photo 
                                         : 'https://ui-avatars.com/api/?name=' + murroby.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2"
-                                    style="height: 200px; width: 150px;">
+                                    class="rounded img-fluid p-2 foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ murroby.nama } ${ murroby.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
@@ -300,8 +298,7 @@
                                     <img src="${ staff.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + staff.photo 
                                         : 'https://ui-avatars.com/api/?name=' + staff.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2"
-                                    style="height: 200px; width: 150px;">
+                                    class="rounded img-fluid p-2 foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
                                     <h5 class="fs-6 mb-0 text-uppercase">${ staff.nama } ${ staff.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
