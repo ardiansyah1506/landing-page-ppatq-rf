@@ -17,8 +17,9 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        margin: 30px 0 30px 0;
-        min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+        width: 100%;
+        margin: 30px 0 10px 0;
+        min-width: 0; /* See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106 */
         word-wrap: break-word;
         background-clip: border-box;
     }
@@ -35,16 +36,15 @@
     }
 
     #ads .deskripsi-fasilitas {
-        display: block; 
-        position: absolute;           /* Pastikan elemen ini menjadi block-level */
-        margin-top: 10px;          /* Jarak antara gambar dan deskripsi */
+        display: block;
+        width: 100%;
+        margin-top: 10px;
         text-align: center;
-        left: 25%;
-        transform: translateX(-25%);
-        border-radius: 30px;
+        border-radius: 12px;
         color: #000;
-        padding: 5px 10px;
+        padding: 8px 12px;
         font-size: 14px;
+        line-height: 1.4;
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
@@ -95,13 +95,13 @@
 
                     @if ($fasilitas && !$fasilitas->isEmpty())
                         @foreach ($fasilitas as $row)
-                            <div class="item selfie col-lg-6 col-md-4 col-6 col-sm d-flex align-items-center justify-content-center">
+                            <div class="item selfie col-lg-6 col-md-4 col-6 col-sm d-flex align-items-start justify-content-center">
                                 <div class="card-fasilitas">
                                     <span class="card-notify-badge bg-green text-white">{{ $row->nama }}</span>
                                     <a href="https://manajemen.ppatq-rf.id/assets/img/upload/foto_fasilitas/{{ $row->foto }}" class="fancylight popup-btn" data-fancybox-group="light"> 
                                         <img class="img-fluid shadow-sm" src="https://manajemen.ppatq-rf.id/assets/img/upload/foto_fasilitas/{{ $row->foto }}" alt="{{ $row->nama }}">
                                     </a>
-                                    <span class="deskripsi-fasilitas bg-white shadow-sm" style="bottom: {{ strlen($row->deskripsi) > 20 ? '-60px' : '-10px' }};">
+                                    <span class="deskripsi-fasilitas bg-white shadow-sm">
                                         {{ $row->deskripsi }}
                                     </span>
                                 </div>
