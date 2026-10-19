@@ -1,30 +1,54 @@
-<!-- resources/views/santri/index.blade.php -->
-
 @extends('layout.main_layout')
 @section('title')
     <title>Kesantrian | PPATQ-RF</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
     <style>
-        /* Ketika tombol di-hover */
-        .nav-pills .nav-link:hover {
-            color: rgb(0, 0, 0) !important;
+        .search-seamless {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
         }
-
-        /* Ketika tombol active */
-        .nav-pills .nav-link.active {
-            color: rgb(255, 255, 255) !important;
-            background-color: #2dcc70;
+        .search-seamless i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #20c997;
         }
-
-        /* Ketika tombol tidak active */
-        /* .nav-pills .nav-link:not(.active) {
-            color: rgb(255, 255, 255) !important;
-            background-color: transparent;
-        } */
+        .search-seamless input {
+            width: 100%;
+            padding: 12px 20px 12px 46px;
+            border: 2px solid #d1e2d7;
+            border-radius: 16px;
+            background: transparent;
+            color: #2c3e50;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-seamless input:focus {
+            outline: none;
+            border-color: #20c997;
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
+        }
+        .profil-card {
+            background: transparent;
+            transition: transform 0.3s ease;
+        }
+        .profil-card:hover {
+            transform: translateY(-4px);
+        }
+        .profil-card .foto-profil {
+            border-radius: 24px;
+            background: linear-gradient(135deg, #f8fcf9 0%, #e8f5ed 100%);
+        }
+        .profil-nama {
+            color: #1a5632;
+            font-weight: 800;
+        }
+        .profil-info p {
+            color: #5c8c6d;
+        }
     </style>
 @endsection
 
@@ -41,13 +65,11 @@
             </div>
             <!-- Search Input Calon -->
             <div class="row mb-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInputCalon" placeholder="Cari Calon" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInputCalon" placeholder="Cari Calon" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <!-- Calon Container -->
@@ -58,16 +80,15 @@
                         @break
                     @endif
                     <div class="col-md-6 col-12 wow fadeIn mb-4">
-                        <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                        <div class="profil-card d-flex flex-row">
                             <div class="col-5 d-flex justify-content-center align-items-center">
                                 <img src="https://ui-avatars.com/api/?name={{ str_replace(' ', '+', $row->nama) }}" 
                                 alt="Avatar {{ $row->nama }}"
-                                class="rounded img-fluid p-2 foto-profil">
+                                class="img-fluid foto-profil">
                             </div>
                             <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                <div class="col-11 border border-success"></div>
-                                <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $row->nama }}</h5>
-                                <ul class="list-unstyled w-100">
+                                <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">{{ $row->nama }}</h5>
+                                <ul class="profil-info list-unstyled w-100">
                                     <div class="col">
                                         <div class="col">
                                             <p class="lh-1 text-sm mb-1">
@@ -97,13 +118,11 @@
             </div>
             <!-- Search Input Santri Aktif -->
             <div class="row mb-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInput" placeholder="Cari Santri" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Cari Santri" autocomplete="off">
+                    </div>
                 </div>
             </div>
 
@@ -112,19 +131,17 @@
                 <!-- Data santri akan ditambahkan melalui JavaScript -->
                 @foreach ($santriAktif as $santri)
                     <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
-                        <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                        <div class="profil-card d-flex flex-row">
                             <div class="col-5 d-flex justify-content-center align-items-center">
                                 <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $santri->photo }}"
-                                    class="rounded img-fluid p-2 foto-profil"
+                                    class="img-fluid foto-profil"
                                     alt="foto profil {{ $santri->nama }}"
                                     data-bs-toggle="modal"
                                     data-bs-target="#imageModal">
                             </div>
                             <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                <div class="col-11 border border-success">
-                                </div>
-                                <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $santri->nama }}</h5>
-                                <ul class="list-unstyled w-100">
+                                <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">{{ $santri->nama }}</h5>
+                                <ul class="profil-info list-unstyled w-100">
                                     <div class="col">
                                         <div class="col">
                                             <p class="lh-1 text-sm mb-1 text-uppercase">
@@ -161,13 +178,11 @@
             </div>
             <!-- Search Input Alumni -->
             <div class="row mb-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInputAlumni" placeholder="Cari Alumni" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInputAlumni" placeholder="Cari Alumni" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <!-- Alumni Container -->
@@ -178,18 +193,17 @@
                         @break
                     @endif
                     <div class="col-md-6 col-12 wow fadeIn mb-4">
-                        <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                        <div class="profil-card d-flex flex-row">
                             <div class="col-5 d-flex justify-content-center align-items-center">
                                 <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/{{ $row->photo }}"
-                                    class="rounded img-fluid p-2 foto-profil"
+                                    class="img-fluid foto-profil"
                                     alt="foto profil {{ $row->nama }}"
                                     data-bs-toggle="modal"
                                     data-bs-target="#imageModal">
                             </div>
                             <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                <div class="col-11 border border-success"></div>
-                                <h5 class="fs-6 mb-0 text-center text-uppercase">{{ $row->nama }}</h5>
-                                <ul class="list-unstyled w-100">
+                                <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">{{ $row->nama }}</h5>
+                                <ul class="profil-info list-unstyled w-100">
                                     <div class="col">
                                         <div class="col">
                                             <p class="lh-1 text-sm mb-1">
@@ -286,19 +300,17 @@
                         $.each(data.data, function(index, santri) {
                             $('#santri-container').append(`
                             <div class="col-md-7 col-lg-4 wow fadeIn mb-4">
-                            <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                            <div class="profil-card d-flex flex-row">
                                 <div class="col-5 d-flex justify-content-center align-items-center">
                                     <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ santri.photo }"
-                                        class="rounded img-fluid p-2 foto-profil"
+                                        class="img-fluid foto-profil"
                                         alt="foto profil ${ santri.nama }"
                                         data-bs-toggle="modal"
                                         data-bs-target="#imageModal">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                    <div class="col-11 border border-success">
-                                    </div>
-                                    <h5 class="fs-6 mb-0 text-center text-uppercase">${ santri.nama }</h5>
-                                    <ul class="list-unstyled w-100">
+                                    <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">${ santri.nama }</h5>
+                                    <ul class="profil-info list-unstyled w-100">
                                         <div class="col">
                                             <div class="col">
                                                 <p class="lh-1 text-sm mb-1 text-uppercase">
@@ -357,18 +369,17 @@
                         $.each(data.data, function(index, alumni) {
                             $('#alumni-container').append(`
                             <div class="col-md-6 col-12 wow fadeIn mb-4">
-                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                <div class="profil-card d-flex flex-row">
                                     <div class="col-5 d-flex justify-content-center align-items-center">
                                         <img src="https://manajemen.ppatq-rf.id/assets/img/upload/photo/${ alumni.photo }"
-                                            class="rounded img-fluid p-2 foto-profil"
+                                            class="img-fluid foto-profil"
                                             alt="foto profil ${ alumni.nama }"
                                             data-bs-toggle="modal"
                                             data-bs-target="#imageModal">
                                     </div>
                                     <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                        <div class="col-11 border border-success"></div>
-                                        <h5 class="fs-6 mb-0 text-center text-uppercase">${ alumni.nama }</h5>
-                                        <ul class="list-unstyled w-100">
+                                        <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">${ alumni.nama }</h5>
+                                        <ul class="profil-info list-unstyled w-100">
                                             <div class="col">
                                                 <div class="col">
                                                     <p class="lh-1 text-sm mb-1">
@@ -470,16 +481,15 @@
                         $.each(data.data, function(index, calon) {
                             $('#calon-container').append(`
                             <div class="col-md-6 col-12 wow fadeIn mb-4">
-                                <div class="p-2 border-0 shadow-sm rounded d-flex flex-row">
+                                <div class="profil-card d-flex flex-row">
                                     <div class="col-5 d-flex justify-content-center align-items-center">
                                         <img src="https://ui-avatars.com/api/?name=${ calon.nama.replace(/ /g, '+') }" 
                                         alt="Avatar ${ calon.nama }"
-                                        class="rounded img-fluid p-2 foto-profil">
+                                        class="img-fluid foto-profil">
                                     </div>
                                     <div class="p-1 d-flex flex-column gap-3 col py-2">
-                                        <div class="col-11 border border-success"></div>
-                                        <h5 class="fs-6 mb-0 text-center text-uppercase">${ calon.nama }</h5>
-                                        <ul class="list-unstyled w-100">
+                                        <h5 class="profil-nama fs-6 mb-0 text-center text-uppercase">${ calon.nama }</h5>
+                                        <ul class="profil-info list-unstyled w-100">
                                             <div class="col">
                                                 <div class="col">
                                                     <p class="lh-1 text-sm mb-1">

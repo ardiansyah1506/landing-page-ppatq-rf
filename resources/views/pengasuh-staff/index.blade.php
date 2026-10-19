@@ -1,25 +1,66 @@
-<!-- resources/views/santri/index.blade.php -->
-
 @extends('layout.main_layout')
 @section('title')
     <title>Pengasuh & Staff | PPATQ-RF</title>
 @endsection
 @section('header')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
     <style>
-        /* Ketika tombol di-hover */
-        .nav-pills .nav-link:hover {
-            color: rgb(0, 0, 0) !important;
+        .search-seamless {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
         }
-
-        /* Ketika tombol active */
-        .nav-pills .nav-link.active {
-            color: rgb(255, 255, 255) !important;
-            background-color: #2dcc70;
+        .search-seamless i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #20c997;
         }
-
+        .search-seamless input {
+            width: 100%;
+            padding: 12px 20px 12px 46px;
+            border: 2px solid #d1e2d7;
+            border-radius: 16px;
+            background: transparent;
+            color: #2c3e50;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-seamless input:focus {
+            outline: none;
+            border-color: #20c997;
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
+        }
+        .profil-card {
+            background: transparent;
+            transition: transform 0.3s ease;
+        }
+        .profil-card:hover {
+            transform: translateY(-4px);
+        }
+        .profil-card .foto-profil {
+            border-radius: 24px;
+            background: linear-gradient(135deg, #f8fcf9 0%, #e8f5ed 100%);
+        }
+        .profil-nama {
+            color: #1a5632;
+            font-weight: 800;
+        }
+        .btn-seamless {
+            background: linear-gradient(135deg, #198754, #20c997);
+            color: #fff;
+            border: 0;
+            border-radius: 16px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(32, 201, 151, 0.2);
+        }
+        .btn-seamless:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(32, 201, 151, 0.3);
+        }
     </style>
 @endsection
 
@@ -36,13 +77,11 @@
             </div>
             <!-- Search Input Ustad -->
             <div class="row mb-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInputUstad" placeholder="Cari Ustad" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInputUstad" placeholder="Cari Ustad" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <!-- Ustad Container -->
@@ -50,7 +89,7 @@
                 <!-- Data Ustad akan ditambahkan melalui JavaScript -->
             </div>
             <div class="text-center mt-3 mb-4">
-                <button id="load-more-ustad" class="btn btn-sm btn-success d-none">Muat Ustad Lagi</button>
+                <button id="load-more-ustad" class="btn-seamless d-none">Muat Ustad Lagi</button>
             </div>
 
             <!-- Murroby -->
@@ -62,13 +101,11 @@
             </div>
             <!-- Search Input Murroby -->
             <div class="row mb-5 mt-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInputMurroby" placeholder="Cari Murroby" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInputMurroby" placeholder="Cari Murroby" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <!-- Murroby Container -->
@@ -76,7 +113,7 @@
                 <!-- Data Murroby akan ditambahkan melalui JavaScript -->
             </div>
             <div class="text-center mt-3 mb-4">
-                <button id="load-more-murroby" class="btn btn-sm btn-success d-none">Muat Murroby Lagi</button>
+                <button id="load-more-murroby" class="btn-seamless d-none">Muat Murroby Lagi</button>
             </div>
 
             <!-- Staff -->
@@ -88,13 +125,11 @@
             </div>
             <!-- Search Input Staff -->
             <div class="row mb-5 mt-5">
-                    <div class="d-flex justify-content-center">
-                        <label class="d-flex-justify-content-end">
-                            <span class="icon fs-5">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        <input type="text" class="input border-0 p-2 rounded shadow-sm py-1" id="searchInputStaff" placeholder="Cari Staff" autocomplete="off" autofocus/>
-                    </label>
+                    <div class="d-flex justify-content-center px-3">
+                    <div class="search-seamless">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInputStaff" placeholder="Cari Staff" autocomplete="off">
+                    </div>
                 </div>
             </div>
             <!-- Staff Container -->
@@ -102,7 +137,7 @@
                 <!-- Data Staff akan ditambahkan melalui JavaScript -->
             </div>
             <div class="text-center mt-3 mb-4">
-                <button id="load-more-staff" class="btn btn-sm btn-success d-none">Muat Staff Lagi</button>
+                <button id="load-more-staff" class="btn-seamless d-none">Muat Staff Lagi</button>
             </div>
         </div>
     </div>
@@ -148,15 +183,15 @@
                     var ustad = ustadData[i];
                     $('#ustad-container').append(`
                         <div class="col-md-3 col-12 wow fadeIn mb-4">
-                            <div class="p-2 border-0 shadow-sm rounded text-center d-flex flex-column justify-content-center">
+                            <div class="profil-card text-center d-flex flex-column justify-content-center">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="${ ustad.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + ustad.photo 
                                         : 'https://ui-avatars.com/api/?name=' + ustad.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2 foto-profil">
+                                    class="img-fluid foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
-                                    <h5 class="fs-6 mb-0 text-uppercase">${ ustad.nama } ${ ustad.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
+                                    <h5 class="profil-nama fs-6 mb-0 text-uppercase">${ ustad.nama } ${ ustad.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
                                 </div>
                             </div>
                         </div>
@@ -221,15 +256,15 @@
                     var murroby = murrobyData[i];
                     $('#murroby-container').append(`
                         <div class="col-md-3 col-12 wow fadeIn mb-4">
-                            <div class="p-2 border-0 shadow-sm rounded text-center d-flex flex-column justify-content-center">
+                            <div class="profil-card text-center d-flex flex-column justify-content-center">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="${ murroby.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + murroby.photo 
                                         : 'https://ui-avatars.com/api/?name=' + murroby.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2 foto-profil">
+                                    class="img-fluid foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
-                                    <h5 class="fs-6 mb-0 text-uppercase">${ murroby.nama } ${ murroby.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
+                                    <h5 class="profil-nama fs-6 mb-0 text-uppercase">${ murroby.nama } ${ murroby.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
                                 </div>
                             </div>
                         </div>
@@ -293,17 +328,15 @@
                     var staff = staffData[i];
                     $('#staff-container').append(`
                         <div class="col-md-3 col-12 wow fadeIn mb-4">
-                            <div class="p-2 border-0 shadow-sm rounded text-center d-flex flex-column justify-content-center">
+                            <div class="profil-card text-center d-flex flex-column justify-content-center">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="${ staff.photo 
                                         ? 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' + staff.photo 
                                         : 'https://ui-avatars.com/api/?name=' + staff.nama.replace(/ /g, '+') }"
-                                    class="rounded img-fluid p-2 foto-profil">
+                                    class="img-fluid foto-profil">
                                 </div>
                                 <div class="p-1 d-flex flex-column gap-3 py-2">
-                                    <h5 class="fs-6 mb-0 text-uppercase">${ staff.nama } ${ staff.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
-                                    <ul class="list-unstyled w-100">
-                                    </ul>
+                                    <h5 class="profil-nama fs-6 mb-0 text-uppercase">${ staff.nama } ${ staff.alhafidz == 1 ? "<sup>AH</sup>" : "" }</h5>
                                 </div>
                             </div>
                         </div>
