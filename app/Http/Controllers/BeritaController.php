@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Crypt;
 
 class BeritaController extends Controller
@@ -14,38 +13,16 @@ class BeritaController extends Controller
     {
         try {
             $data = DB::table('berita')
-            ->select(
-                'berita.id',
-                'berita.kategori_id',
-                'berita.judul',
-                'berita.slug',
-                'berita.created_at',
-                'berita.thumbnail',
-                'berita.gambar_dalam',
-                'berita.isi_berita',
-                'berita.user_id',
-                'users.name AS nama_user',
-                'kategori_berita.nama_kategori AS nama_kategori'
-            )
-            ->leftJoin('users', 'berita.user_id', '=', 'users.id')
-            ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
-            ->whereNull('berita.deleted_at')
-            ->orderBy('berita.created_at', 'desc')
-            ->paginate(6);
-
-            $modifiedItems = collect($data->items())->map(function ($item) {
+            ->select('id', 'judul', 'created_at', 'thumbnail', 'isi_berita')
+            ->whereNull('deleted_at')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6)
+            ->withQueryString()
+            ->through(function ($item) {
                 $item->id = Crypt::encryptString($item->id . "ppatq");
                 return $item;
             });
-            
-            $data = new LengthAwarePaginator(
-                $modifiedItems,
-                $data->total(),
-                $data->perPage(),
-                $data->currentPage(),
-                ['path' => request()->url(), 'query' => request()->query()]
-            );
-    
+
             return view('berita.index', compact('data'));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

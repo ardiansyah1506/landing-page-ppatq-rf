@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Crypt;
 
 class HomePageController extends Controller
@@ -13,61 +12,55 @@ class HomePageController extends Controller
     {
         try {
                 $data['beritas'] = DB::table('berita')
-                ->select('berita.id','berita.kategori_id', 'berita.judul', 'berita.slug','berita.created_at', 'berita.thumbnail', 'berita.gambar_dalam', 'berita.isi_berita', 'berita.user_id', 'users.name AS nama_user', 'kategori_berita.nama_kategori AS nama_kategori')
-                ->leftJoin('users', 'berita.user_id', '=', 'users.id')
-                ->leftJoin('kategori_berita', 'berita.kategori_id', '=', 'kategori_berita.id')
-                ->orderBy('berita.created_at', 'desc')
-                ->whereNull('berita.deleted_at')
-                ->paginate(3);
-
-                $modifiedItems = collect($data['beritas']->items())->map(function ($item) {
+                ->select('id', 'judul', 'created_at', 'thumbnail', 'isi_berita')
+                ->whereNull('deleted_at')
+                ->orderBy('created_at', 'desc')
+                ->paginate(3)
+                ->withQueryString()
+                ->through(function ($item) {
                     $item->id = Crypt::encryptString($item->id . "ppatq");
                     return $item;
                 });
-                
-                $data['beritas'] = new LengthAwarePaginator(
-                    $modifiedItems,
-                    $data['beritas']->total(),
-                    $data['beritas']->perPage(),
-                    $data['beritas']->currentPage(),
-                    ['path' => request()->url(), 'query' => request()->query()]
-                );
 
+                // Tanggal mulai selalu >= hari ini, jadi urut tanggal_mulai sama dengan jarak terdekat
                 $data['agendas'] = DB::table('agenda')
                 ->select('judul', 'isi', 'tanggal_mulai')
-                ->whereNull('agenda.deleted_at')
+                ->whereNull('deleted_at')
                 ->where('tanggal_mulai', '>=', DB::raw('CURDATE()'))
-                ->orderByRaw('ABS(DATEDIFF(NOW(), tanggal_mulai))')
+                ->orderBy('tanggal_mulai')
                 ->limit(5)
                 ->get();
 
-                $data['jumlahSiswaLaki'] = DB::table('santri_detail')->where([
-                    'status' => 0,
-                    'jenis_kelamin' => 'L'
-                ])->count();
-                
-                $data['jumlahSiswaPerempuan'] = DB::table('santri_detail')->where([
-                    'status' => 0,
-                    'jenis_kelamin' => 'P'
-                    ])->count();
+                $jumlahSantri = DB::table('santri_detail')
+                ->where('status', 0)
+                ->whereIn('jenis_kelamin', ['L', 'P'])
+                ->selectRaw('jenis_kelamin, COUNT(*) AS jumlah')
+                ->groupBy('jenis_kelamin')
+                ->pluck('jumlah', 'jenis_kelamin');
 
-                $data['jumlahMurroby'] = DB::table('tb_guru')
-                ->where('jabatan_new','murobby')
-                ->count();
+                $data['jumlahSiswaLaki'] = $jumlahSantri['L'] ?? 0;
+                $data['jumlahSiswaPerempuan'] = $jumlahSantri['P'] ?? 0;
 
-                $data['jumlahGuru'] = DB::table('tb_guru')
-                ->whereIn('jabatan_new',['murobby','ustadz','tahfidz'])
-                ->count();
+                $jumlahGuru = DB::table('tb_guru')
+                ->whereIn('jabatan_new', ['murobby', 'ustadz', 'tahfidz'])
+                ->selectRaw("SUM(jabatan_new = 'murobby') AS murroby, COUNT(*) AS guru")
+                ->first();
+
+                $data['jumlahMurroby'] = (int) $jumlahGuru->murroby;
+                $data['jumlahGuru'] = (int) $jumlahGuru->guru;
 
                 $data['fasilitas'] = DB::table('fasilitas')
+                ->select('nama', 'foto')
                 ->where('published', 1)
                 ->get();
 
                 $data['galeri'] = DB::table('galeri')
+                ->select('nama', 'foto')
                 ->where('published', 1)
                 ->get();
 
                 $data['dakwah'] = DB::table('dakwah')
+                    ->select('id', 'judul', 'isi_dakwah')
                     ->whereNull('deleted_at')
                     ->limit(4)
                     ->get()
@@ -83,56 +76,54 @@ class HomePageController extends Controller
     }
     
     public function getSantriRandom(){
+        $query = DB::table('santri_detail')
+            ->select('nama', 'photo', 'kelas')
+            ->whereNotNull('photo')
+            ->where('photo', '!=', '');
+
+        // Foto dicek langsung ke server manajemen, jadi dibatasi beberapa percobaan saja
         $santri = null;
-        $exists = false;
-            
-        while (!$exists) {
+        for ($i = 0; $i < 5; $i++) {
+            $santri = $this->randomRow(clone $query);
+            if (!$santri) {
+                break;
+            }
 
-            $santri = DB::table('santri_detail')
-                ->select(
-                    'santri_detail.nama', 
-                    'santri_detail.photo', 
-                    'santri_detail.kelas', 
-                )
-                ->inRandomOrder()
-                ->first();
-
-
-            $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' . $santri->photo;
-            $headers = get_headers($url);
-            $exists = strpos($headers[0], '200');
-            if ($exists) {
-                $exists = true;
+            if ($this->photoExists('https://manajemen.ppatq-rf.id/assets/img/upload/photo/' . $santri->photo)) {
+                break;
             }
         }
-            return response()->json($santri);
+
+        return response()->json($santri);
     }
 
     public function getPegawaiRandom(){
-        // $pegawai = null;
-        // $exists = false;
+        $pegawai = $this->randomRow(
+            DB::table('employee_new')->select('nama', 'jabatan', 'photo')
+        );
 
-        // while(!$exists){
-
-        $pegawai = DB::table('employee_new')
-        ->select(
-            'nama',
-            'jabatan',
-            'photo'
-            )
-        ->inRandomOrder()
-        ->first();
-
-        // $url = 'https://manajemen.ppatq-rf.id/assets/img/upload/photo/' . $pegawai->photo;
-        // $headers = get_headers($url);
-        // $exists = strpos($headers[0], '200');
-
-        // if($exists){
-        //     $exists = true;
-        // }
-        
-        // }
         return response()->json($pegawai);
+    }
+
+    /**
+     * Ambil satu baris acak lewat count + offset, tanpa ORDER BY RAND() yang mengurutkan seluruh tabel.
+     */
+    private function randomRow($query)
+    {
+        $total = (clone $query)->count();
+        if ($total === 0) {
+            return null;
+        }
+
+        return $query->offset(random_int(0, $total - 1))->limit(1)->first();
+    }
+
+    private function photoExists(string $url): bool
+    {
+        $context = stream_context_create(['http' => ['method' => 'HEAD', 'timeout' => 2]]);
+        $headers = @get_headers($url, false, $context);
+
+        return $headers !== false && str_contains($headers[0], '200');
     }
     
     public function About(){
